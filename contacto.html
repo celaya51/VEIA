@@ -48,16 +48,43 @@
         <div>
           <h3 class="mb">Cuéntanos qué necesitas</h3>
           <form id="leadForm">
-            <p class="mb"><input id="f-nombre" name="Nombre" placeholder="Tu nombre" required style="width:100%;padding:13px 16px;border:1px solid var(--border);border-radius:10px;background:var(--surface);color:var(--text);font-family:inherit"></p>
-            <p class="mb"><input id="f-negocio" name="Negocio" placeholder="Nombre de tu negocio" style="width:100%;padding:13px 16px;border:1px solid var(--border);border-radius:10px;background:var(--surface);color:var(--text);font-family:inherit"></p>
-            <p class="mb"><input id="f-telefono" name="Telefono" placeholder="Teléfono / WhatsApp" style="width:100%;padding:13px 16px;border:1px solid var(--border);border-radius:10px;background:var(--surface);color:var(--text);font-family:inherit"></p>
-            <p class="mb"><textarea id="f-mensaje" name="Mensaje" placeholder="¿Qué te gustaría? (sitio web, redes, una herramienta…)" rows="4" style="width:100%;padding:13px 16px;border:1px solid var(--border);border-radius:10px;background:var(--surface);color:var(--text);font-family:inherit"></textarea></p>
-            <button type="submit" class="btn btn--primary btn--lg">Enviar por WhatsApp</button>
-            <p class="note">Al enviar se abre WhatsApp con tu mensaje listo. Te respondemos pronto, sin compromiso.</p>
+            <p class="mb"><input id="f-nombre" name="nombre" placeholder="Tu nombre" required style="width:100%;padding:13px 16px;border:1px solid var(--border);border-radius:10px;background:var(--surface);color:var(--text);font-family:inherit"></p>
+            <p class="mb"><input id="f-negocio" name="negocio" placeholder="Nombre de tu negocio" style="width:100%;padding:13px 16px;border:1px solid var(--border);border-radius:10px;background:var(--surface);color:var(--text);font-family:inherit"></p>
+            <p class="mb"><input id="f-telefono" name="telefono" placeholder="Teléfono / WhatsApp" style="width:100%;padding:13px 16px;border:1px solid var(--border);border-radius:10px;background:var(--surface);color:var(--text);font-family:inherit"></p>
+            <p class="mb"><input id="f-correo" name="correo" type="email" placeholder="Tu correo (opcional, para responderte)" style="width:100%;padding:13px 16px;border:1px solid var(--border);border-radius:10px;background:var(--surface);color:var(--text);font-family:inherit"></p>
+            <p class="mb" style="position:absolute;left:-9999px" aria-hidden="true"><input id="f-sitio" name="sitio" tabindex="-1" autocomplete="off"></p>
+            <p class="mb"><textarea id="f-mensaje" name="mensaje" placeholder="¿Qué te gustaría? (sitio web, redes, una herramienta…)" rows="4" required style="width:100%;padding:13px 16px;border:1px solid var(--border);border-radius:10px;background:var(--surface);color:var(--text);font-family:inherit"></textarea></p>
+            <button type="submit" class="btn btn--primary btn--lg" id="btnEnviar">Enviar mensaje</button>
+            <button type="button" class="btn btn--wa btn--lg" id="btnWhats" style="margin-left:8px">o por WhatsApp</button>
+            <p class="note" id="formNota">Tu mensaje llega directo a nuestro correo. Te respondemos pronto, sin compromiso.</p>
           </form>
           <script>
-            document.getElementById('leadForm').addEventListener('submit', function (e) {
+            var form = document.getElementById('leadForm');
+            var nota = document.getElementById('formNota');
+            form.addEventListener('submit', function (e) {
               e.preventDefault();
+              var btn = document.getElementById('btnEnviar');
+              btn.disabled = true;
+              btn.textContent = 'Enviando…';
+              fetch('enviar.php', { method: 'POST', body: new FormData(form) })
+                .then(function (r) { return r.json(); })
+                .then(function (d) {
+                  if (d.ok) {
+                    form.reset();
+                    nota.textContent = '✅ ¡Mensaje enviado! Te respondemos pronto.';
+                  } else {
+                    nota.textContent = '⚠️ ' + (d.error || 'No se pudo enviar. Intenta por WhatsApp.');
+                  }
+                })
+                .catch(function () {
+                  nota.textContent = '⚠️ No se pudo enviar. Intenta por WhatsApp.';
+                })
+                .then(function () {
+                  btn.disabled = false;
+                  btn.textContent = 'Enviar mensaje';
+                });
+            });
+            document.getElementById('btnWhats').addEventListener('click', function () {
               var nombre = document.getElementById('f-nombre').value.trim();
               var negocio = document.getElementById('f-negocio').value.trim();
               var tel = document.getElementById('f-telefono').value.trim();
