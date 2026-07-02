@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="natural">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contacto · VEIA</title>
+  <meta name="description" content="Contáctanos por WhatsApp o correo. Cotización sin compromiso.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container nav">
+      <a href="index.html" class="brand"><span class="dot"></span>VEIA</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="servicios.html">Servicios</a></li>
+        <li><a href="servicios-paquetes.html">Precios</a></li>
+        <li><a href="nosotros.html">Nosotros</a></li>
+        <li><a href="portafolio.html">Portafolio</a></li>
+        <li><a href="contacto.html" class="active">Contacto</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" title="Cambiar color" aria-label="Cambiar color">🌿</button>
+        <a href="#form" class="btn btn--primary">Cotizar</a>
+        <button class="menu-btn" id="menuBtn" aria-label="Menú">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container center">
+      <span class="eyebrow">Contacto</span>
+      <h2>Hablemos de tu negocio</h2>
+      <p class="lead">La forma más rápida es por WhatsApp. Te respondemos pronto, sin compromiso.</p>
+      <div class="hero-cta" style="justify-content:center;margin-top:20px">
+        <a href="https://wa.me/525659898908?text=Hola%20VEIA,%20quiero%20informaci%C3%B3n" class="btn btn--wa btn--lg">WhatsApp: 56 5989 8908</a>
+        <a href="mailto:hola@veia.com.mx" class="btn btn--ghost btn--lg">Enviar correo</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tint" id="form" style="padding-top:0">
+    <div class="container">
+      <div class="grid grid-2">
+        <div>
+          <h3 class="mb">Cuéntanos qué necesitas</h3>
+          <form id="leadForm">
+            <p class="mb"><input id="f-nombre" name="Nombre" placeholder="Tu nombre" required style="width:100%;padding:13px 16px;border:1px solid var(--border);border-radius:10px;background:var(--surface);color:var(--text);font-family:inherit"></p>
+            <p class="mb"><input id="f-negocio" name="Negocio" placeholder="Nombre de tu negocio" style="width:100%;padding:13px 16px;border:1px solid var(--border);border-radius:10px;background:var(--surface);color:var(--text);font-family:inherit"></p>
+            <p class="mb"><input id="f-telefono" name="Telefono" placeholder="Teléfono / WhatsApp" style="width:100%;padding:13px 16px;border:1px solid var(--border);border-radius:10px;background:var(--surface);color:var(--text);font-family:inherit"></p>
+            <p class="mb"><textarea id="f-mensaje" name="Mensaje" placeholder="¿Qué te gustaría? (sitio web, redes, una herramienta…)" rows="4" style="width:100%;padding:13px 16px;border:1px solid var(--border);border-radius:10px;background:var(--surface);color:var(--text);font-family:inherit"></textarea></p>
+            <button type="submit" class="btn btn--primary btn--lg">Enviar por WhatsApp</button>
+            <p class="note">Al enviar se abre WhatsApp con tu mensaje listo. Te respondemos pronto, sin compromiso.</p>
+          </form>
+          <script>
+            document.getElementById('leadForm').addEventListener('submit', function (e) {
+              e.preventDefault();
+              var nombre = document.getElementById('f-nombre').value.trim();
+              var negocio = document.getElementById('f-negocio').value.trim();
+              var tel = document.getElementById('f-telefono').value.trim();
+              var msg = document.getElementById('f-mensaje').value.trim();
+              var texto = 'Hola VEIA, soy ' + (nombre || '(sin nombre)');
+              if (negocio) texto += ' de ' + negocio;
+              if (tel) texto += '. Mi teléfono: ' + tel;
+              if (msg) texto += '. Me interesa: ' + msg;
+              window.open('https://wa.me/525659898908?text=' + encodeURIComponent(texto), '_blank');
+            });
+          </script>
+        </div>
+        <div>
+          <div class="card">
+            <h3 class="mb">Datos de contacto</h3>
+            <p>📱 <b>WhatsApp:</b> <a href="https://wa.me/525659898908" style="color:var(--primary)">56 5989 8908</a></p>
+            <p class="mt-s">✉️ <b>Correo:</b> <a href="mailto:hola@veia.com.mx" style="color:var(--primary)">hola@veia.com.mx</a></p>
+            <p class="mt-s">📍 <b>Zona:</b> Guadalajara · Zapopan, Jal.</p>
+            <p class="mt-s">🕒 <b>Atención:</b> Lunes a viernes</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div><div class="brand"><span class="dot"></span>VEIA</div><p style="color:rgba(255,255,255,.75)">Que tu marca resuene. Llevamos tu negocio a internet, sin complicaciones.</p></div>
+        <div><h4>Servicios</h4><ul><li><a href="servicios.html">Sitio Express</a></li><li><a href="servicios.html">Redes y marketing</a></li><li><a href="servicios.html">Diseño y branding</a></li><li><a href="servicios.html">Soluciones IT</a></li></ul></div>
+        <div><h4>Contacto</h4><ul><li><a href="https://wa.me/525659898908">WhatsApp: 56 5989 8908</a></li><li><a href="mailto:hola@veia.com.mx">hola@veia.com.mx</a></li><li>Guadalajara · Zapopan, Jal.</li></ul></div>
+      </div>
+      <div class="footer-bottom">© 2026 VEIA · Guadalajara · Zapopan, Jal.</div>
+    </div>
+  </footer>
+  <script src="js/main.js"></script>
+</body>
+</html>
