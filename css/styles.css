@@ -92,6 +92,8 @@ p  { color: var(--muted); }
 .btn--ghost { background: transparent; color: var(--text); border-color: var(--border); }
 .btn--ghost:hover { border-color: var(--primary); color: var(--primary); }
 .btn--wa { background: #25D366; color: #fff; }
+.btn--light { background: #fff; color: var(--primary-d); }
+.btn--light:hover { background: rgba(255,255,255,.88); }
 .btn--lg { padding: 16px 30px; font-size: 1.05rem; }
 
 /* ---------- Header / Nav ---------- */
