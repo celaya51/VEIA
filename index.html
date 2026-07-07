@@ -87,6 +87,41 @@
     /* Accent colors */
     .as-subtitle-3 .text { color: var(--veia-primary) !important; }
     .as-hero-3-active .active-text i { color: var(--veia-accent) !important; }
+
+    /* Fix services accordion for light background */
+    .as-services-3-accordion-item {
+      border-bottom: 1px solid var(--veia-border) !important;
+    }
+    .as-services-3-accordion-item .item-title .text {
+      background: none !important;
+      -webkit-text-fill-color: var(--veia-text) !important;
+    }
+    .as-services-3-accordion-item .item-title .number .just-number {
+      color: var(--veia-primary) !important;
+    }
+    .as-services-3-accordion-item .item-title .number {
+      color: var(--veia-muted) !important;
+    }
+    .as-services-3-accordion-item .item-disc {
+      color: var(--veia-muted) !important;
+    }
+    .as-services-3-accordion-item .item-tags a {
+      color: var(--veia-primary) !important;
+      border-color: var(--veia-border) !important;
+    }
+
+    /* Fix FAQ accordion for light background */
+    .as-accordion-item {
+      background-color: var(--veia-surface) !important;
+      border: 1px solid var(--veia-border) !important;
+    }
+    .as-accordion-item .item-title {
+      color: var(--veia-text) !important;
+      border-bottom-color: var(--veia-border) !important;
+    }
+    .as-accordion-item .item-disc {
+      color: var(--veia-muted) !important;
+    }
     
     /* Services section bg text */
     .as-services-3-bg-text { color: rgba(45,106,79,0.06) !important; }
