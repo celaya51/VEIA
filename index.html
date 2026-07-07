@@ -9,7 +9,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Mona+Sans:ital,wght@0,200..900;1,200..900&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Raleway:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 
   <!-- Avista Theme CSS -->
   <link rel="stylesheet" href="css/animate-min.css">
@@ -27,39 +27,39 @@
   <!-- VEIA Custom Theme Colors (Avista-compatible) -->
   <style id="veia-primary-color">
     :root {
-      --as-clr-pr-1: #2D6A4F;
-      --as-clr-pr-3: #1B4332;
+      --as-clr-pr-1: #fc773e;
+      --as-clr-pr-3: #f7b046;
       
-      /* VEIA brand tokens mapped to Avista */
-      --veia-bg: #F4F1EA;
+      /* VEIA brand tokens */
+      --veia-bg: #fff;
       --veia-surface: #FFFFFF;
-      --veia-surface-2: #ECF1EA;
+      --veia-surface-2: #9ec6ab;
       --veia-text: #1B2A24;
-      --veia-muted: #54655B;
-      --veia-primary: #2D6A4F;
-      --veia-primary-d: #1B4332;
-      --veia-accent: #74C69D;
-      --veia-accent-2: #C97B5A;
-      --veia-border: #DCE3DA;
-      --veia-hero-grad: linear-gradient(135deg, #1B4332 0%, #2D6A4F 55%, #40916C 100%);
+      --veia-muted: #5c4a3a;
+      --veia-primary: #fc773e;
+      --veia-primary-d: #f7b046;
+      --veia-accent: #a5bb1a;
+      --veia-accent-2: #faa785;
+      --veia-border: #faa785;
+      --veia-hero-grad: linear-gradient(135deg, #fc773e 0%, #f7b046 100%);
     }
     ::-webkit-scrollbar-thumb {
-      background-color: #2D6A4F;
+      background-color: #fc773e;
     }
   </style>
 
   <!-- VEIA overrides for Avista -->
   <style>
-    /* Override Avista's orange/red with VEIA green */
     :root {
-      --as-clr-pr-1: #2D6A4F !important;
-      --as-clr-pr-3: #1B4332 !important;
+      --as-clr-pr-1: #fc773e !important;
+      --as-clr-pr-3: #f7b046 !important;
     }
     
     /* Smooth theme transitions */
     body { 
       transition: background 0.3s ease, color 0.3s ease;
-      font-family: 'Inter', 'Mona Sans', sans-serif;
+      font-family: 'Raleway', sans-serif;
+      font-weight: 400;
     }
     h1, h2, h3, h4, h5, h6, .as-h-1, .tx-title {
       font-family: 'Poppins', 'Inter', sans-serif;
@@ -74,19 +74,19 @@
       -webkit-text-stroke: 1px rgba(45,106,79,0.15);
     }
     
-    /* Make buttons use VEIA green */
+    /* Buttons */
     .as-pr-btn-3 {
-      background: var(--veia-primary-d) !important;
+      background: #fc773e !important;
       color: #fff !important;
     }
     .as-pr-btn-3::after {
-      background-image: linear-gradient(90deg, var(--veia-primary-d), var(--veia-primary) 50%, var(--veia-primary-d)) !important;
+      background-image: linear-gradient(90deg, #fc773e, #f7b046 50%, #fc773e) !important;
     }
     .as-pr-btn-3:hover { color: #fff !important; }
     
     /* Accent colors */
-    .as-subtitle-3 .text { color: var(--veia-primary) !important; }
-    .as-hero-3-active .active-text i { color: var(--veia-accent) !important; }
+    .as-subtitle-3 .text { color: #fc773e !important; }
+    .as-hero-3-active .active-text i { color: #a5bb1a !important; }
 
     /* Fix services accordion for light background */
     .as-services-3-accordion-item {
@@ -124,10 +124,10 @@
     }
     
     /* Services section bg text */
-    .as-services-3-bg-text { color: rgba(45,106,79,0.06) !important; }
+    .as-services-3-bg-text { color: rgba(252,119,62,0.05) !important; }
     
     /* Footer */
-    .as-footer-3-area { background: var(--veia-primary-d) !important; }
+    .as-footer-3-area { background: linear-gradient(135deg, #fc773e, #f7b046) !important; }
     
     /* Custom card overrides for VEIA */
     .veia-card {
@@ -139,7 +139,7 @@
     }
     .veia-card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+      box-shadow: 0 12px 32px rgba(252,119,62,0.12);
     }
     .veia-card .ico {
       width: 52px; height: 52px;
@@ -161,8 +161,8 @@
     }
     .veia-plan:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,0.1); }
     .veia-plan.featured { 
-      border-color: var(--veia-primary); 
-      box-shadow: 0 8px 30px rgba(45,106,79,0.2);
+      border-color: #fc773e; 
+      box-shadow: 0 8px 30px rgba(252,119,62,0.2);
       transform: scale(1.03);
     }
     .veia-plan .price {
@@ -193,7 +193,7 @@
       content: "✓";
       position: absolute;
       left: 0;
-      color: var(--veia-primary);
+      color: #fc773e;
       font-weight: 700;
     }
 
@@ -221,7 +221,7 @@
     
     /* CTA band */
     .veia-cta-band {
-      background: var(--veia-hero-grad);
+      background: linear-gradient(135deg, #fc773e, #f7b046);
       color: #fff;
       border-radius: 24px;
       padding: 52px 40px;
@@ -231,8 +231,8 @@
     .veia-cta-band p { color: rgba(255,255,255,0.85); margin: 12px auto 24px; max-width: 520px; }
 
     /* Override Avista background for sections */
-    .veia-light-bg { background: var(--veia-bg) !important; }
-    .veia-tint-bg { background: var(--veia-surface-2) !important; }
+    .veia-light-bg { background: #fff !important; }
+    .veia-tint-bg { background: #9ec6ab !important; }
     
     /* WhatsApp button style */
     .as-pr-btn-3.veia-btn-wa {
@@ -244,7 +244,7 @@
     }
 
     /* Nav link hover */
-    header nav a:hover { color: var(--veia-primary) !important; }
+    header nav a:hover { color: #fc773e !important; }
     
     /* Hide Avista preloader after load */
     .as-preloader.loaded { opacity: 0; pointer-events: none; }
@@ -503,7 +503,7 @@
                     <a href="#" class="as-p-1 link-elm">Impresos</a>
                   </div>
                 </div>
-                <div class="item-img wa-fix wa-img-cover" style="background:linear-gradient(135deg,#C97B5A,#2D6A4F);display:grid;place-items:center;font-size:4rem;">🎨</div>
+                <div class="item-img wa-fix wa-img-cover" style="background:linear-gradient(135deg,#faa785,#fc773e);display:grid;place-items:center;font-size:4rem;">🎨</div>
               </div>
             </div>
           </div>
@@ -524,7 +524,7 @@
                     <a href="#" class="as-p-1 link-elm">IT</a>
                   </div>
                 </div>
-                <div class="item-img wa-fix wa-img-cover" style="background:linear-gradient(135deg,#1B4332,#40916C);display:grid;place-items:center;font-size:4rem;">⚙️</div>
+                <div class="item-img wa-fix wa-img-cover" style="background:linear-gradient(135deg,#f7b046,#fc773e);display:grid;place-items:center;font-size:4rem;">⚙️</div>
               </div>
             </div>
           </div>
@@ -644,7 +644,7 @@
           <img src="images/logo-tocomadera.png" alt="Tocomadera" style="max-width:190px;max-height:70px;object-fit:contain;margin-bottom:14px;">
           <p style="color:var(--veia-muted);font-size:.85rem;margin:0;">Diseño de muebles en madera <b>↗</b></p>
         </a>
-        <a href="https://mdemaiz.mx/" target="_blank" rel="noopener" class="veia-card" style="text-decoration:none;color:var(--veia-text);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:36px 24px;min-height:180px;background:linear-gradient(135deg,#1B4332,#2D6A4F);">
+        <a href="https://mdemaiz.mx/" target="_blank" rel="noopener" class="veia-card" style="text-decoration:none;color:var(--veia-text);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:36px 24px;min-height:180px;background:linear-gradient(135deg,#fc773e,#f7b046);">
           <img src="images/logo-mdemaiz-lg.png" alt="M de Maíz" style="max-width:160px;max-height:65px;object-fit:contain;margin-bottom:14px;">
           <p style="color:rgba(255,255,255,.75);font-size:.85rem;margin:0;">Botanas y snacks de maíz <b>↗</b></p>
         </a>
