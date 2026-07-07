@@ -75,8 +75,14 @@
     }
     
     /* Make buttons use VEIA green */
-    .as-pr-btn-3 .text::before { background: var(--veia-primary) !important; }
-    .as-pr-btn-3:hover .text::before { background: var(--veia-primary-d) !important; }
+    .as-pr-btn-3 {
+      background: var(--veia-primary) !important;
+      color: #fff !important;
+    }
+    .as-pr-btn-3::after {
+      background-image: linear-gradient(90deg, var(--veia-primary), var(--veia-primary-d) 50%, var(--veia-primary)) !important;
+    }
+    .as-pr-btn-3:hover { color: #fff !important; }
     
     /* Accent colors */
     .as-subtitle-3 .text { color: var(--veia-primary) !important; }
@@ -194,7 +200,13 @@
     .veia-tint-bg { background: var(--veia-surface-2) !important; }
     
     /* WhatsApp button style */
-    .as-pr-btn-3.veia-btn-wa .text::before { background: #25D366 !important; }
+    .as-pr-btn-3.veia-btn-wa {
+      background: #25D366 !important;
+      color: #fff !important;
+    }
+    .as-pr-btn-3.veia-btn-wa::after {
+      background-image: linear-gradient(90deg, #25D366, #128C7E 50%, #25D366) !important;
+    }
 
     /* Nav link hover */
     header nav a:hover { color: var(--veia-primary) !important; }
