@@ -198,9 +198,6 @@
 
     /* Nav link hover */
     header nav a:hover { color: var(--veia-primary) !important; }
-
-    /* Header scroll background */
-    .header-scrolled { background: rgba(244,241,234,0.85); backdrop-filter: blur(16px); box-shadow: 0 1px 20px rgba(0,0,0,0.05); }
     
     /* Hide Avista preloader after load */
     .as-preloader.loaded { opacity: 0; pointer-events: none; }
@@ -235,7 +232,7 @@
   <div class="wa-back-to-top wa_backToTop"><i class="fa-solid fa-angle-up"></i></div>
 
   <!-- ============ HEADER ============ -->
-  <header style="position:sticky;top:0;z-index:100;background:transparent;padding:14px 0;transition:background 0.35s,backdrop-filter 0.35s,box-shadow 0.35s;">
+  <header style="position:sticky;top:0;z-index:100;background:var(--veia-bg);padding:14px 0;border-bottom:1px solid var(--veia-border);">
     <div style="display:flex;align-items:center;justify-content:space-between;max-width:1200px;margin:0 auto;padding:0 28px;">
       <a href="#" style="display:flex;align-items:center;gap:8px;font-family:Poppins,sans-serif;font-weight:800;font-size:1.5rem;color:var(--veia-text);text-decoration:none;">
         <span style="width:12px;height:12px;border-radius:50%;background:var(--veia-accent);display:inline-block;box-shadow:0 0 0 4px rgba(45,106,79,0.2);"></span> VEIA
@@ -699,15 +696,7 @@
       }, 800);
     });
 
-    // Header scroll effect
-    var header = document.querySelector('header');
-    window.addEventListener('scroll', function() {
-      if (window.scrollY > 50) {
-        header.classList.add('header-scrolled');
-      } else {
-        header.classList.remove('header-scrolled');
-      }
-    });
+
   })();
 </script>
 
