@@ -218,6 +218,12 @@
     
     /* WhatsApp button style */
     .as-pr-btn-3.veia-btn-wa .text::before { background: #25D366 !important; }
+
+    /* Nav link hover */
+    header nav a:hover { color: var(--veia-primary) !important; }
+
+    /* Header scroll background */
+    .header-scrolled { background: rgba(244,241,234,0.85); backdrop-filter: blur(16px); box-shadow: 0 1px 20px rgba(0,0,0,0.05); }
     
     /* Hide Avista preloader after load */
     .as-preloader.loaded { opacity: 0; pointer-events: none; }
@@ -255,30 +261,28 @@
   <button class="veia-theme-toggle" id="veiaThemeToggle" title="Cambiar tema" aria-label="Cambiar tema">🌿</button>
 
   <!-- ============ HEADER ============ -->
-  <header class="as-header-3-area" style="position:sticky;top:0;z-index:100;background:rgba(244,241,234,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--veia-border);">
-    <div class="container as-container-1 text-center">
-      <div class="as-header-3-wrap">
-        <a href="#" class="tx-logo as-header-3-logo" style="display:flex;align-items:center;gap:8px;font-family:Poppins,sans-serif;font-weight:800;font-size:1.5rem;color:var(--veia-text);text-decoration:none;">
-          <span style="width:12px;height:12px;border-radius:50%;background:var(--veia-accent);display:inline-block;box-shadow:0 0 0 4px rgba(45,106,79,0.2);"></span> VEIA
+  <header style="position:sticky;top:0;z-index:100;background:transparent;padding:14px 0;transition:background 0.35s,backdrop-filter 0.35s,box-shadow 0.35s;">
+    <div style="display:flex;align-items:center;justify-content:space-between;max-width:1200px;margin:0 auto;padding:0 28px;">
+      <a href="#" style="display:flex;align-items:center;gap:8px;font-family:Poppins,sans-serif;font-weight:800;font-size:1.5rem;color:var(--veia-text);text-decoration:none;">
+        <span style="width:12px;height:12px;border-radius:50%;background:var(--veia-accent);display:inline-block;box-shadow:0 0 0 4px rgba(45,106,79,0.2);"></span> VEIA
+      </a>
+      <nav class="d-none d-xl-block">
+        <ul style="display:flex;align-items:center;gap:32px;list-style:none;margin:0;padding:0;">
+          <li><a href="#inicio" style="color:var(--veia-text);text-decoration:none;font-weight:500;font-size:0.95rem;transition:color .2s;">Inicio</a></li>
+          <li><a href="#servicios" style="color:var(--veia-text);text-decoration:none;font-weight:500;font-size:0.95rem;transition:color .2s;">Servicios</a></li>
+          <li><a href="#precios" style="color:var(--veia-text);text-decoration:none;font-weight:500;font-size:0.95rem;transition:color .2s;">Precios</a></li>
+          <li><a href="#nosotros" style="color:var(--veia-text);text-decoration:none;font-weight:500;font-size:0.95rem;transition:color .2s;">Nosotros</a></li>
+          <li><a href="#portafolio" style="color:var(--veia-text);text-decoration:none;font-weight:500;font-size:0.95rem;transition:color .2s;">Portafolio</a></li>
+          <li><a href="#contacto" style="color:var(--veia-text);text-decoration:none;font-weight:500;font-size:0.95rem;transition:color .2s;">Contacto</a></li>
+        </ul>
+      </nav>
+      <div style="display:flex;align-items:center;gap:12px;">
+        <a href="https://wa.me/525659898908?text=Hola%20VEIA" target="_blank" class="as-pr-btn-3 veia-btn-wa tx-button">
+          <span class="text" data-back="Cotizar" data-front="Cotizar"></span>
         </a>
-        <nav class="as-main-navigation as-header-3-menu d-none d-xl-block">
-          <ul class="nav navbar-nav">
-            <li><a href="#inicio" style="color:var(--veia-text);">Inicio</a></li>
-            <li><a href="#servicios" style="color:var(--veia-text);">Servicios</a></li>
-            <li><a href="#precios" style="color:var(--veia-text);">Precios</a></li>
-            <li><a href="#nosotros" style="color:var(--veia-text);">Nosotros</a></li>
-            <li><a href="#portafolio" style="color:var(--veia-text);">Portafolio</a></li>
-            <li><a href="#contacto" style="color:var(--veia-text);">Contacto</a></li>
-          </ul>
-        </nav>
-        <div class="as-header-3-action-link">
-          <a href="https://wa.me/525659898908?text=Hola%20VEIA" target="_blank" class="as-pr-btn-3 veia-btn-wa tx-button">
-            <span class="text" data-back="Cotizar" data-front="Cotizar"></span>
-          </a>
-          <button type="button" class="sr-offcanvas-btn-1 offcanvas_toggle d-xl-none d-inline-block" style="border:1px solid var(--veia-border);background:var(--veia-surface);border-radius:10px;">
-            <i class="fa-solid fa-bars"></i>
-          </button>
-        </div>
+        <button type="button" class="offcanvas_toggle d-xl-none d-inline-block" style="border:1px solid var(--veia-border);background:var(--veia-surface);border-radius:10px;width:42px;height:42px;font-size:1.3rem;cursor:pointer;">
+          <i class="fa-solid fa-bars"></i>
+        </button>
       </div>
     </div>
   </header>
@@ -765,6 +769,16 @@
         var preloader = document.querySelector('.as-preloader');
         if (preloader) preloader.classList.add('loaded');
       }, 800);
+    });
+
+    // Header scroll effect
+    var header = document.querySelector('header');
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 50) {
+        header.classList.add('header-scrolled');
+      } else {
+        header.classList.remove('header-scrolled');
+      }
     });
   })();
 </script>
