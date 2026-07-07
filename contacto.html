@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" data-theme="natural">
+<html lang="es">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,7 +7,7 @@
   <meta name="description" content="Contáctanos por WhatsApp o correo. Cotización sin compromiso.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Mona+Sans:ital,wght@0,200..900;1,200..900&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/animate-min.css">
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/swiper.min.css">
@@ -16,121 +16,145 @@
   <link rel="stylesheet" href="css/avista-companion.css">
   <link rel="stylesheet" href="css/avista-extra.css">
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    :root{--as-clr-pr-1:#2D6A4F;--as-clr-pr-3:#1B4332}
+    body{font-family:Inter,Mona Sans,sans-serif;background:#F4F1EA;color:#1B2A24;margin:0}
+    h1,h2,h3,h4{font-family:Poppins,Inter,sans-serif}
+    .as-pr-btn-3{background:#1B4332!important;color:#fff!important}
+    .as-pr-btn-3::after{background-image:linear-gradient(90deg,#1B4332,#2D6A4F 50%,#1B4332)!important}
+    .as-pr-btn-3:hover{color:#fff!important}
+    .as-pr-btn-3.veia-btn-wa{background:#25D366!important}
+    .as-pr-btn-3.veia-btn-wa::after{background-image:linear-gradient(90deg,#25D366,#128C7E 50%,#25D366)!important}
+    .as-pr-btn-3.btn-white{background:#fff!important;color:#1B4332!important}
+    .as-pr-btn-3.btn-white::after{background-image:linear-gradient(90deg,#fff,#ECF1EA 50%,#fff)!important}
+    .as-pr-btn-3.btn-white:hover{color:#1B4332!important}
+
+    header nav a:hover{color:#2D6A4F!important}
+
+    .page-content{max-width:1120px;margin:0 auto;padding:40px 28px}
+    .section-tint{background:#ECF1EA;padding:60px 0}
+    .eyebrow{display:inline-block;font-family:Poppins,sans-serif;font-weight:600;font-size:.8rem;letter-spacing:1.5px;text-transform:uppercase;color:#2D6A4F;margin-bottom:8px}
+    .subtitle{font-size:1.1rem;color:#54655B;max-width:600px}
+    .card{background:#fff;border:1px solid #DCE3DA;border-radius:16px;padding:28px}
+    .grid{display:grid;gap:22px}
+    .grid-2{grid-template-columns:repeat(2,1fr)}
+    input,textarea{width:100%;padding:13px 16px;border:1px solid #DCE3DA;border-radius:10px;background:#fff;color:#1B2A24;font-family:Inter,sans-serif;font-size:.95rem;box-sizing:border-box}
+    input:focus,textarea:focus{outline:none;border-color:#2D6A4F;box-shadow:0 0 0 3px rgba(45,106,79,.1)}
+    .note{font-size:.85rem;color:#54655B;margin-top:14px}
+
+    footer{background:#1B4332;color:rgba(255,255,255,.82);padding:50px 28px 26px;margin-top:40px}
+    footer a{color:rgba(255,255,255,.82);text-decoration:none}
+    footer a:hover{color:#fff}
+    footer h4{color:#fff;margin-bottom:14px;font-size:1rem}
+    footer ul{list-style:none;display:grid;gap:8px;padding:0}
+    .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:32px;max-width:1120px;margin:0 auto}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,.15);margin-top:32px;padding-top:18px;font-size:.85rem;text-align:center;max-width:1120px;margin-left:auto;margin-right:auto}
+    .footer-brand{display:flex;align-items:center;gap:10px;font-family:Poppins,sans-serif;font-weight:800;font-size:1.4rem;color:#fff;margin-bottom:12px}
+    .footer-brand .dot{width:12px;height:12px;border-radius:50%;background:#74C69D}
+
+    @media(max-width:860px){.grid-2{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr}}
+  </style>
 </head>
 <body>
-  <header class="header">
-    <div class="container nav">
-      <a href="index.html" class="brand"><span class="dot"></span>VEIA</a>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="servicios.html">Servicios</a></li>
-        <li><a href="servicios-paquetes.html">Precios</a></li>
-        <li><a href="nosotros.html">Nosotros</a></li>
-        <li><a href="portafolio.html">Portafolio</a></li>
-        <li><a href="contacto.html" class="active">Contacto</a></li>
-      </ul>
-      <div class="nav-actions">
-        <button class="theme-toggle" id="themeToggle" title="Cambiar color" aria-label="Cambiar color">🌿</button>
-        <a href="#form" class="btn btn--primary">Cotizar</a>
-        <button class="menu-btn" id="menuBtn" aria-label="Menú">☰</button>
+
+  <!-- HEADER -->
+  <header style="position:sticky;top:0;z-index:100;background:#F4F1EA;padding:14px 0;border-bottom:1px solid #DCE3DA;">
+    <div style="display:flex;align-items:center;justify-content:space-between;max-width:1200px;margin:0 auto;padding:0 28px;">
+      <a href="index.html" style="display:flex;align-items:center;gap:8px;font-family:Poppins,sans-serif;font-weight:800;font-size:1.5rem;color:#1B2A24;text-decoration:none;">
+        <span style="width:12px;height:12px;border-radius:50%;background:#74C69D;display:inline-block;box-shadow:0 0 0 4px rgba(45,106,79,0.2);"></span> VEIA
+      </a>
+      <nav class="d-none d-xl-block">
+        <ul style="display:flex;align-items:center;gap:32px;list-style:none;margin:0;padding:0;">
+          <li><a href="index.html" style="color:#1B2A24;text-decoration:none;font-weight:500;">Inicio</a></li>
+          <li><a href="servicios.html" style="color:#1B2A24;text-decoration:none;font-weight:500;">Servicios</a></li>
+          <li><a href="servicios-paquetes.html" style="color:#1B2A24;text-decoration:none;font-weight:500;">Precios</a></li>
+          <li><a href="nosotros.html" style="color:#1B2A24;text-decoration:none;font-weight:500;">Nosotros</a></li>
+          <li><a href="portafolio.html" style="color:#1B2A24;text-decoration:none;font-weight:500;">Portafolio</a></li>
+          <li><a href="contacto.html" style="color:#2D6A4F;text-decoration:none;font-weight:600;">Contacto</a></li>
+        </ul>
+      </nav>
+      <div style="display:flex;align-items:center;gap:12px;">
+        <a href="#form" class="as-pr-btn-3 tx-button"><span class="text" data-back="Cotizar" data-front="Cotizar"></span></a>
+        <button class="d-xl-none" style="border:1px solid #DCE3DA;background:#fff;border-radius:10px;width:42px;height:42px;font-size:1.3rem;cursor:pointer;">☰</button>
       </div>
     </div>
   </header>
 
-  <section class="section">
-    <div class="container center">
+  <!-- HERO -->
+  <section style="padding:60px 0 40px;">
+    <div class="page-content" style="text-align:center;">
       <span class="eyebrow">Contacto</span>
-      <h2>Hablemos de tu negocio</h2>
-      <p class="lead">La forma más rápida es por WhatsApp. Te respondemos pronto, sin compromiso.</p>
-      <div class="hero-cta" style="justify-content:center;margin-top:20px">
-        <a href="https://calendar.app.google/VWkFMP8V77mzLEN7A" target="_blank" rel="noopener" class="btn btn--primary btn--lg">📅 Agenda una llamada</a>
-        <a href="https://wa.me/525659898908?text=Hola%20VEIA,%20quiero%20informaci%C3%B3n" class="btn btn--wa btn--lg">WhatsApp: 56 5989 8908</a>
-        <a href="mailto:contacto@veia.com.mx" class="btn btn--ghost btn--lg">Enviar correo</a>
+      <h2 style="font-size:2rem;">Hablemos de tu negocio</h2>
+      <p class="subtitle" style="margin:0 auto 24px;">La forma más rápida es por WhatsApp. Te respondemos pronto, sin compromiso.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+        <a href="https://calendar.app.google/VWkFMP8V77mzLEN7A" target="_blank" rel="noopener" class="as-pr-btn-3 tx-button"><span class="text" data-back="📅 Agenda una llamada" data-front="📅 Agenda una llamada"></span></a>
+        <a href="https://wa.me/525659898908?text=Hola%20VEIA" class="as-pr-btn-3 veia-btn-wa tx-button"><span class="text" data-back="WhatsApp" data-front="WhatsApp"></span></a>
+        <a href="mailto:contacto@veia.com.mx" class="as-pr-btn-3 btn-white tx-button"><span class="text" data-back="Enviar correo" data-front="Enviar correo"></span></a>
       </div>
     </div>
   </section>
 
-  <section class="section section--tint" id="form" style="padding-top:0">
-    <div class="container">
+  <!-- FORM -->
+  <section class="section-tint" id="form" style="padding-top:30px;">
+    <div class="page-content">
       <div class="grid grid-2">
         <div>
-          <h3 class="mb">Cuéntanos qué necesitas</h3>
+          <h3 style="margin-bottom:18px;">Cuéntanos qué necesitas</h3>
           <form id="leadForm">
-            <p class="mb"><input id="f-nombre" name="nombre" placeholder="Tu nombre" required style="width:100%;padding:13px 16px;border:1px solid var(--border);border-radius:10px;background:var(--surface);color:var(--text);font-family:inherit"></p>
-            <p class="mb"><input id="f-negocio" name="negocio" placeholder="Nombre de tu negocio" style="width:100%;padding:13px 16px;border:1px solid var(--border);border-radius:10px;background:var(--surface);color:var(--text);font-family:inherit"></p>
-            <p class="mb"><input id="f-telefono" name="telefono" placeholder="Teléfono / WhatsApp" style="width:100%;padding:13px 16px;border:1px solid var(--border);border-radius:10px;background:var(--surface);color:var(--text);font-family:inherit"></p>
-            <p class="mb"><input id="f-correo" name="correo" type="email" placeholder="Tu correo (opcional, para responderte)" style="width:100%;padding:13px 16px;border:1px solid var(--border);border-radius:10px;background:var(--surface);color:var(--text);font-family:inherit"></p>
-            <p class="mb" style="position:absolute;left:-9999px" aria-hidden="true"><input id="f-sitio" name="sitio" tabindex="-1" autocomplete="off"></p>
-            <p class="mb"><textarea id="f-mensaje" name="mensaje" placeholder="¿Qué te gustaría? (sitio web, redes, una herramienta…)" rows="4" required style="width:100%;padding:13px 16px;border:1px solid var(--border);border-radius:10px;background:var(--surface);color:var(--text);font-family:inherit"></textarea></p>
-            <button type="submit" class="btn btn--primary btn--lg" id="btnEnviar">Enviar mensaje</button>
-            <button type="button" class="btn btn--wa btn--lg" id="btnWhats" style="margin-left:8px">o por WhatsApp</button>
+            <p style="margin-bottom:12px;"><input id="f-nombre" name="nombre" placeholder="Tu nombre" required></p>
+            <p style="margin-bottom:12px;"><input id="f-negocio" name="negocio" placeholder="Nombre de tu negocio"></p>
+            <p style="margin-bottom:12px;"><input id="f-telefono" name="telefono" placeholder="Teléfono / WhatsApp"></p>
+            <p style="margin-bottom:12px;"><input id="f-correo" name="correo" type="email" placeholder="Tu correo (opcional)"></p>
+            <p style="position:absolute;left:-9999px" aria-hidden="true"><input id="f-sitio" name="sitio" tabindex="-1" autocomplete="off"></p>
+            <p style="margin-bottom:12px;"><textarea id="f-mensaje" name="mensaje" placeholder="¿Qué te gustaría? (sitio web, redes, una herramienta…)" rows="4" required></textarea></p>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;">
+              <button type="submit" class="as-pr-btn-3 tx-button" id="btnEnviar"><span class="text" data-back="Enviar mensaje" data-front="Enviar mensaje"></span></button>
+              <button type="button" class="as-pr-btn-3 veia-btn-wa tx-button" id="btnWhats"><span class="text" data-back="o por WhatsApp" data-front="o por WhatsApp"></span></button>
+            </div>
             <p class="note" id="formNota">Tu mensaje llega directo a nuestro correo. Te respondemos pronto, sin compromiso.</p>
           </form>
           <script>
-            var form = document.getElementById('leadForm');
-            var nota = document.getElementById('formNota');
-            form.addEventListener('submit', function (e) {
-              e.preventDefault();
-              var btn = document.getElementById('btnEnviar');
-              btn.disabled = true;
-              btn.textContent = 'Enviando…';
-              fetch('enviar.php', { method: 'POST', body: new FormData(form) })
-                .then(function (r) { return r.json(); })
-                .then(function (d) {
-                  if (d.ok) {
-                    form.reset();
-                    nota.textContent = '✅ ¡Mensaje enviado! Te respondemos pronto.';
-                  } else {
-                    nota.textContent = '⚠️ ' + (d.error || 'No se pudo enviar. Intenta por WhatsApp.');
-                  }
-                })
-                .catch(function () {
-                  nota.textContent = '⚠️ No se pudo enviar. Intenta por WhatsApp.';
-                })
-                .then(function () {
-                  btn.disabled = false;
-                  btn.textContent = 'Enviar mensaje';
-                });
+            var form=document.getElementById('leadForm'),nota=document.getElementById('formNota');
+            form.addEventListener('submit',function(e){
+              e.preventDefault();var btn=document.getElementById('btnEnviar');btn.disabled=true;btn.querySelector('.text').setAttribute('data-front','Enviando…');
+              fetch('enviar.php',{method:'POST',body:new FormData(form)}).then(function(r){return r.json()}).then(function(d){
+                if(d.ok){form.reset();nota.textContent='✅ ¡Mensaje enviado! Te respondemos pronto.'}
+                else{nota.textContent='⚠️ '+(d.error||'No se pudo enviar. Intenta por WhatsApp.')}
+              }).catch(function(){nota.textContent='⚠️ No se pudo enviar. Intenta por WhatsApp.'}).then(function(){
+                btn.disabled=false;btn.querySelector('.text').setAttribute('data-front','Enviar mensaje');
+              });
             });
-            document.getElementById('btnWhats').addEventListener('click', function () {
-              var nombre = document.getElementById('f-nombre').value.trim();
-              var negocio = document.getElementById('f-negocio').value.trim();
-              var tel = document.getElementById('f-telefono').value.trim();
-              var msg = document.getElementById('f-mensaje').value.trim();
-              var texto = 'Hola VEIA, soy ' + (nombre || '(sin nombre)');
-              if (negocio) texto += ' de ' + negocio;
-              if (tel) texto += '. Mi teléfono: ' + tel;
-              if (msg) texto += '. Me interesa: ' + msg;
-              window.open('https://wa.me/525659898908?text=' + encodeURIComponent(texto), '_blank');
+            document.getElementById('btnWhats').addEventListener('click',function(){
+              var n=document.getElementById('f-nombre').value.trim(),neg=document.getElementById('f-negocio').value.trim(),t=document.getElementById('f-telefono').value.trim(),m=document.getElementById('f-mensaje').value.trim();
+              var txt='Hola VEIA, soy '+(n||'(sin nombre)');if(neg)txt+=' de '+neg;if(t)txt+='. Mi tel: '+t;if(m)txt+='. Me interesa: '+m;
+              window.open('https://wa.me/525659898908?text='+encodeURIComponent(txt),'_blank');
             });
           </script>
         </div>
         <div>
           <div class="card">
-            <h3 class="mb">Datos de contacto</h3>
-            <p>📅 <b>Citas:</b> <a href="https://calendar.app.google/VWkFMP8V77mzLEN7A" target="_blank" rel="noopener" style="color:var(--primary)">Agenda una llamada de 30 min</a></p>
-            <p class="mt-s">📱 <b>WhatsApp:</b> <a href="https://wa.me/525659898908" style="color:var(--primary)">56 5989 8908</a></p>
-            <p class="mt-s">✉️ <b>Correo:</b> <a href="mailto:contacto@veia.com.mx" style="color:var(--primary)">contacto@veia.com.mx</a></p>
-            <p class="mt-s">📍 <b>Zona:</b> Guadalajara · Zapopan, Jal.</p>
-            <p class="mt-s">🕒 <b>Atención:</b> Lunes a viernes</p>
+            <h3 style="margin-bottom:16px;">Datos de contacto</h3>
+            <p style="margin-bottom:8px;">📅 <b>Citas:</b> <a href="https://calendar.app.google/VWkFMP8V77mzLEN7A" target="_blank" style="color:#2D6A4F;">Agenda una llamada de 30 min</a></p>
+            <p style="margin-bottom:8px;">📱 <b>WhatsApp:</b> <a href="https://wa.me/525659898908" style="color:#2D6A4F;">56 5989 8908</a></p>
+            <p style="margin-bottom:8px;">✉️ <b>Correo:</b> <a href="mailto:contacto@veia.com.mx" style="color:#2D6A4F;">contacto@veia.com.mx</a></p>
+            <p style="margin-bottom:8px;">📍 <b>Zona:</b> Guadalajara · Zapopan, Jal.</p>
+            <p>🕒 <b>Atención:</b> Lunes a viernes</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div><div class="brand"><span class="dot"></span>VEIA</div><p style="color:rgba(255,255,255,.75)">Que tu marca resuene. Llevamos tu negocio a internet, sin complicaciones.</p></div>
-        <div><h4>Servicios</h4><ul><li><a href="servicios.html">Sitio Express</a></li><li><a href="servicios.html">Redes y marketing</a></li><li><a href="servicios.html">Diseño y branding</a></li><li><a href="servicios.html">Soluciones IT</a></li></ul></div>
-        <div><h4>Contacto</h4><ul><li><a href="https://wa.me/525659898908">WhatsApp: 56 5989 8908</a></li><li><a href="mailto:contacto@veia.com.mx">contacto@veia.com.mx</a></li><li>Guadalajara · Zapopan, Jal.</li></ul></div>
-      </div>
-      <div class="footer-bottom">© 2026 VEIA · Guadalajara · Zapopan, Jal.</div>
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div><div class="footer-brand"><span class="dot"></span>VEIA</div><p style="color:rgba(255,255,255,.75)">Que tu marca resuene. Llevamos tu negocio a internet, sin complicaciones.</p></div>
+      <div><h4>Servicios</h4><ul><li><a href="servicios.html">Sitio Express</a></li><li><a href="servicios.html">Redes y marketing</a></li><li><a href="servicios.html">Diseño y branding</a></li><li><a href="servicios.html">Soluciones IT</a></li></ul></div>
+      <div><h4>Contacto</h4><ul><li><a href="https://wa.me/525659898908">WhatsApp: 56 5989 8908</a></li><li><a href="mailto:contacto@veia.com.mx">contacto@veia.com.mx</a></li><li>Guadalajara · Zapopan, Jal.</li></ul></div>
     </div>
+    <div class="footer-bottom">© 2026 VEIA · Guadalajara · Zapopan, Jal.</div>
   </footer>
-  <script src="js/main.js"></script>
+
   <script src="js/jquery.min.js"></script>
   <script src="js/bootstrap-min.js"></script>
   <script src="js/avista-core.js"></script>

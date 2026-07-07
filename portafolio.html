@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" data-theme="natural">
+<html lang="es">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,7 +7,7 @@
   <meta name="description" content="Ejemplos de sitios y proyectos de VEIA.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Mona+Sans:ital,wght@0,200..900;1,200..900&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/animate-min.css">
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/swiper.min.css">
@@ -16,100 +16,134 @@
   <link rel="stylesheet" href="css/avista-companion.css">
   <link rel="stylesheet" href="css/avista-extra.css">
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    :root{--as-clr-pr-1:#2D6A4F;--as-clr-pr-3:#1B4332}
+    body{font-family:Inter,Mona Sans,sans-serif;background:#F4F1EA;color:#1B2A24;margin:0}
+    h1,h2,h3,h4{font-family:Poppins,Inter,sans-serif}
+    .as-pr-btn-3{background:#1B4332!important;color:#fff!important}
+    .as-pr-btn-3::after{background-image:linear-gradient(90deg,#1B4332,#2D6A4F 50%,#1B4332)!important}
+    .as-pr-btn-3:hover{color:#fff!important}
+    .as-pr-btn-3.veia-btn-wa{background:#25D366!important}
+    .as-pr-btn-3.veia-btn-wa::after{background-image:linear-gradient(90deg,#25D366,#128C7E 50%,#25D366)!important}
+
+    header nav a:hover{color:#2D6A4F!important}
+
+    .page-content{max-width:1120px;margin:0 auto;padding:40px 28px}
+    .section-tint{background:#ECF1EA;padding:60px 0}
+    .section-white{background:#F4F1EA;padding:60px 0}
+    .eyebrow{display:inline-block;font-family:Poppins,sans-serif;font-weight:600;font-size:.8rem;letter-spacing:1.5px;text-transform:uppercase;color:#2D6A4F;margin-bottom:8px}
+    .subtitle{font-size:1.1rem;color:#54655B;max-width:600px}
+    .card{background:#fff;border:1px solid #DCE3DA;border-radius:16px;padding:28px;transition:transform .2s,box-shadow .2s;display:block;text-decoration:none;color:#1B2A24}
+    .card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.08)}
+    .card .ico{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;font-size:1.5rem;background:#ECF1EA;margin-bottom:14px}
+    .card h3{font-size:1.15rem;margin-bottom:8px}
+    .card p{color:#54655B;font-size:.95rem;line-height:1.6}
+    .grid{display:grid;gap:22px}
+    .grid-2{grid-template-columns:repeat(2,1fr)}
+    .grid-3{grid-template-columns:repeat(3,1fr)}
+    .placeholder-box{border:2px dashed #DCE3DA;border-radius:12px;padding:30px;text-align:center;color:#54655B;font-size:.9rem}
+
+    .cta-band{background:linear-gradient(135deg,#1B4332,#2D6A4F,#40916C);color:#fff;border-radius:24px;padding:50px 40px;text-align:center}
+    .cta-band h2{color:#fff;font-size:1.8rem}
+    .cta-band p{color:rgba(255,255,255,.85);margin:10px auto 24px;max-width:520px}
+
+    footer{background:#1B4332;color:rgba(255,255,255,.82);padding:50px 28px 26px;margin-top:40px}
+    footer a{color:rgba(255,255,255,.82);text-decoration:none}
+    footer a:hover{color:#fff}
+    footer h4{color:#fff;margin-bottom:14px;font-size:1rem}
+    footer ul{list-style:none;display:grid;gap:8px;padding:0}
+    .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:32px;max-width:1120px;margin:0 auto}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,.15);margin-top:32px;padding-top:18px;font-size:.85rem;text-align:center;max-width:1120px;margin-left:auto;margin-right:auto}
+    .footer-brand{display:flex;align-items:center;gap:10px;font-family:Poppins,sans-serif;font-weight:800;font-size:1.4rem;color:#fff;margin-bottom:12px}
+    .footer-brand .dot{width:12px;height:12px;border-radius:50%;background:#74C69D}
+
+    @media(max-width:860px){.grid-2,.grid-3{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr}}
+  </style>
 </head>
 <body>
-  <header class="header">
-    <div class="container nav">
-      <a href="index.html" class="brand"><span class="dot"></span>VEIA</a>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="servicios.html">Servicios</a></li>
-        <li><a href="servicios-paquetes.html">Precios</a></li>
-        <li><a href="nosotros.html">Nosotros</a></li>
-        <li><a href="portafolio.html" class="active">Portafolio</a></li>
-        <li><a href="contacto.html">Contacto</a></li>
-      </ul>
-      <div class="nav-actions">
-        <button class="theme-toggle" id="themeToggle" title="Cambiar color" aria-label="Cambiar color">🌿</button>
-        <a href="contacto.html" class="btn btn--primary">Cotizar</a>
-        <button class="menu-btn" id="menuBtn" aria-label="Menú">☰</button>
+
+  <!-- HEADER -->
+  <header style="position:sticky;top:0;z-index:100;background:#F4F1EA;padding:14px 0;border-bottom:1px solid #DCE3DA;">
+    <div style="display:flex;align-items:center;justify-content:space-between;max-width:1200px;margin:0 auto;padding:0 28px;">
+      <a href="index.html" style="display:flex;align-items:center;gap:8px;font-family:Poppins,sans-serif;font-weight:800;font-size:1.5rem;color:#1B2A24;text-decoration:none;">
+        <span style="width:12px;height:12px;border-radius:50%;background:#74C69D;display:inline-block;box-shadow:0 0 0 4px rgba(45,106,79,0.2);"></span> VEIA
+      </a>
+      <nav class="d-none d-xl-block">
+        <ul style="display:flex;align-items:center;gap:32px;list-style:none;margin:0;padding:0;">
+          <li><a href="index.html" style="color:#1B2A24;text-decoration:none;font-weight:500;">Inicio</a></li>
+          <li><a href="servicios.html" style="color:#1B2A24;text-decoration:none;font-weight:500;">Servicios</a></li>
+          <li><a href="servicios-paquetes.html" style="color:#1B2A24;text-decoration:none;font-weight:500;">Precios</a></li>
+          <li><a href="nosotros.html" style="color:#1B2A24;text-decoration:none;font-weight:500;">Nosotros</a></li>
+          <li><a href="portafolio.html" style="color:#2D6A4F;text-decoration:none;font-weight:600;">Portafolio</a></li>
+          <li><a href="contacto.html" style="color:#1B2A24;text-decoration:none;font-weight:500;">Contacto</a></li>
+        </ul>
+      </nav>
+      <div style="display:flex;align-items:center;gap:12px;">
+        <a href="contacto.html" class="as-pr-btn-3 tx-button"><span class="text" data-back="Cotizar" data-front="Cotizar"></span></a>
+        <button class="d-xl-none" style="border:1px solid #DCE3DA;background:#fff;border-radius:10px;width:42px;height:42px;font-size:1.3rem;cursor:pointer;">☰</button>
       </div>
     </div>
   </header>
 
-  <section class="section">
-    <div class="container center">
+  <!-- TITLE -->
+  <section style="padding:60px 0 30px;">
+    <div class="page-content" style="text-align:center;">
       <span class="eyebrow">Portafolio</span>
-      <h2>Proyectos que hablan por nosotros</h2>
-      <p class="lead">Estos son algunos de los sitios web que hemos creado para nuestros clientes.</p>
+      <h2 style="font-size:2rem;">Proyectos que hablan por nosotros</h2>
+      <p class="subtitle" style="margin:0 auto;">Estos son algunos de los sitios web que hemos creado para nuestros clientes.</p>
     </div>
   </section>
 
   <!-- PROYECTOS REALES -->
-  <section class="section section--tint" style="padding-top:0">
-    <div class="container">
-      <span class="eyebrow">Clientes reales</span><h2>Sitios web entregados</h2>
-      <div class="grid grid-2 mt">
-        <a class="card" href="https://legendtower.com.mx/" target="_blank" rel="noopener">
-          <div class="ico">🏢</div><h3>Legend Horizon Living</h3>
-          <p>Desarrollo inmobiliario. <b>Visitar sitio ↗</b></p>
-        </a>
-        <a class="card" href="https://uditore.mx/" target="_blank" rel="noopener">
-          <div class="ico">📊</div><h3>Uditore</h3>
-          <p>Consultoría contable y fiscal. <b>Visitar sitio ↗</b></p>
-        </a>
-        <a class="card" href="https://tocomadera.mx/" target="_blank" rel="noopener">
-          <div class="ico">🪑</div><h3>Tocomadera</h3>
-          <p>Diseño de muebles y accesorios en madera. <b>Visitar sitio ↗</b></p>
-        </a>
-        <a class="card" href="https://mdemaiz.mx/" target="_blank" rel="noopener">
-          <div class="ico">🌽</div><h3>M de Maíz</h3>
-          <p>Botanas y snacks de maíz. <b>Visitar sitio ↗</b></p>
-        </a>
+  <section class="section-tint" style="padding-top:0;">
+    <div class="page-content">
+      <span class="eyebrow">Clientes reales</span>
+      <h2 style="font-size:1.8rem;margin-bottom:24px;">Sitios web entregados</h2>
+      <div class="grid grid-2">
+        <a class="card" href="https://legendtower.com.mx/" target="_blank" rel="noopener"><div class="ico">🏢</div><h3>Legend Horizon Living</h3><p>Desarrollo inmobiliario. <b>Visitar sitio ↗</b></p></a>
+        <a class="card" href="https://uditore.mx/" target="_blank" rel="noopener"><div class="ico">📊</div><h3>Uditore</h3><p>Consultoría contable y fiscal. <b>Visitar sitio ↗</b></p></a>
+        <a class="card" href="https://tocomadera.mx/" target="_blank" rel="noopener"><div class="ico">🪑</div><h3>Tocomadera</h3><p>Diseño de muebles y accesorios en madera. <b>Visitar sitio ↗</b></p></a>
+        <a class="card" href="https://mdemaiz.mx/" target="_blank" rel="noopener"><div class="ico">🌽</div><h3>M de Maíz</h3><p>Botanas y snacks de maíz. <b>Visitar sitio ↗</b></p></a>
       </div>
     </div>
   </section>
 
-  <!-- PLANTILLAS DEMO -->
-  <section class="section">
-    <div class="container">
-      <div class="center"><span class="eyebrow">Ejemplos Express</span><h2>Plantillas listas para personalizar</h2><p class="lead">Ideales para tu Sitio Express. Las adaptamos a tu negocio en una sola sesión.</p></div>
-      <div class="grid grid-3 mt">
-        <a class="card" href="plantillas/belleza/index.html">
-          <div class="ico">💇‍♀️</div><h3>Estética / Belleza</h3>
-          <p>Salón de belleza, barbería o spa. <b>Ver demo →</b></p>
-        </a>
+  <!-- PLANTILLAS -->
+  <section class="section-white">
+    <div class="page-content">
+      <div style="text-align:center;margin-bottom:30px;"><span class="eyebrow">Ejemplos Express</span><h2 style="font-size:1.8rem;">Plantillas listas para personalizar</h2><p class="subtitle" style="margin:0 auto;">Ideales para tu Sitio Express. Las adaptamos a tu negocio en una sola sesión.</p></div>
+      <div class="grid grid-3">
+        <a class="card" href="plantillas/belleza/index.html"><div class="ico">💇‍♀️</div><h3>Estética / Belleza</h3><p>Salón de belleza, barbería o spa. <b>Ver demo →</b></p></a>
         <a class="card" href="plantillas/taller/index.html"><div class="ico">🔧</div><h3>Taller / Servicios</h3><p>Taller mecánico, eléctrico o servicio técnico. <b>Ver demo →</b></p></a>
         <a class="card" href="plantillas/tienda/index.html"><div class="ico">🛍️</div><h3>Tienda / Comercio</h3><p>Tienda en línea, catálogo o comercio local. <b>Ver demo →</b></p></a>
         <a class="card" href="plantillas/salud/index.html"><div class="ico">🩺</div><h3>Salud / Consultorio</h3><p>Médico, dentista, nutriólogo o psicólogo. <b>Ver demo →</b></p></a>
         <a class="card" href="plantillas/profesional/index.html"><div class="ico">💼</div><h3>Profesional / Servicios</h3><p>Abogado, contador, arquitecto o consultor. <b>Ver demo →</b></p></a>
-        <div class="card"><div class="ico">⚙️</div><h3>Soluciones a la medida</h3><p class="placeholder-box" style="margin-top:10px">Próximamente</p></div>
+        <div class="card"><div class="ico">⚙️</div><h3>Soluciones a la medida</h3><div class="placeholder-box">Próximamente</div></div>
       </div>
     </div>
   </section>
 
-  <section class="section">
-    <div class="container">
+  <!-- CTA -->
+  <section class="section-white" style="padding-bottom:80px;">
+    <div class="page-content">
       <div class="cta-band">
         <h2>¿Quieres ser uno de nuestros primeros casos?</h2>
         <p>Precio especial de lanzamiento para los primeros negocios. Pregúntanos.</p>
-        <a href="https://wa.me/525659898908?text=Quiero%20ser%20de%20los%20primeros%20clientes" class="btn btn--wa btn--lg">Quiero saber más</a>
+        <a href="https://wa.me/525659898908?text=Quiero%20ser%20de%20los%20primeros%20clientes" class="as-pr-btn-3 veia-btn-wa tx-button"><span class="text" data-back="Quiero saber más" data-front="Quiero saber más"></span></a>
       </div>
     </div>
   </section>
 
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div><div class="brand"><span class="dot"></span>VEIA</div><p style="color:rgba(255,255,255,.75)">Que tu marca resuene. Llevamos tu negocio a internet, sin complicaciones.</p></div>
-        <div><h4>Servicios</h4><ul><li><a href="servicios.html">Sitio Express</a></li><li><a href="servicios.html">Redes y marketing</a></li><li><a href="servicios.html">Diseño y branding</a></li><li><a href="servicios.html">Soluciones IT</a></li></ul></div>
-        <div><h4>Contacto</h4><ul><li><a href="https://wa.me/525659898908">WhatsApp: 56 5989 8908</a></li><li><a href="mailto:contacto@veia.com.mx">contacto@veia.com.mx</a></li><li>Guadalajara · Zapopan, Jal.</li></ul></div>
-      </div>
-      <div class="footer-bottom">© 2026 VEIA · Guadalajara · Zapopan, Jal.</div>
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div><div class="footer-brand"><span class="dot"></span>VEIA</div><p style="color:rgba(255,255,255,.75)">Que tu marca resuene. Llevamos tu negocio a internet, sin complicaciones.</p></div>
+      <div><h4>Servicios</h4><ul><li><a href="servicios.html">Sitio Express</a></li><li><a href="servicios.html">Redes y marketing</a></li><li><a href="servicios.html">Diseño y branding</a></li><li><a href="servicios.html">Soluciones IT</a></li></ul></div>
+      <div><h4>Contacto</h4><ul><li><a href="https://wa.me/525659898908">WhatsApp: 56 5989 8908</a></li><li><a href="mailto:contacto@veia.com.mx">contacto@veia.com.mx</a></li><li>Guadalajara · Zapopan, Jal.</li></ul></div>
     </div>
+    <div class="footer-bottom">© 2026 VEIA · Guadalajara · Zapopan, Jal.</div>
   </footer>
-  <script src="js/main.js"></script>
+
   <script src="js/jquery.min.js"></script>
   <script src="js/bootstrap-min.js"></script>
   <script src="js/avista-core.js"></script>
