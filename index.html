@@ -88,29 +88,6 @@
     /* Footer */
     .as-footer-3-area { background: var(--veia-primary-d) !important; }
     
-    /* Theme toggle button */
-    .veia-theme-toggle {
-      position: fixed;
-      bottom: 24px;
-      left: 24px;
-      z-index: 999;
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      border: 2px solid rgba(255,255,255,0.3);
-      background: var(--veia-primary);
-      color: #fff;
-      cursor: pointer;
-      font-size: 1.2rem;
-      display: grid;
-      place-items: center;
-      transition: transform 0.3s, background 0.3s;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
-    }
-    .veia-theme-toggle:hover {
-      transform: rotate(25deg) scale(1.1);
-    }
-
     /* Custom card overrides for VEIA */
     .veia-card {
       background: var(--veia-surface);
@@ -256,9 +233,6 @@
 
   <!-- back-to-top -->
   <div class="wa-back-to-top wa_backToTop"><i class="fa-solid fa-angle-up"></i></div>
-
-  <!-- theme toggle -->
-  <button class="veia-theme-toggle" id="veiaThemeToggle" title="Cambiar tema" aria-label="Cambiar tema">🌿</button>
 
   <!-- ============ HEADER ============ -->
   <header style="position:sticky;top:0;z-index:100;background:transparent;padding:14px 0;transition:background 0.35s,backdrop-filter 0.35s,box-shadow 0.35s;">
@@ -717,53 +691,7 @@
   // Init WOW animations
   new WOW({ boxClass: 'wow', animateClass: 'animated', offset: 100, mobile: false }).init();
 
-  // Theme toggle for VEIA
-  (function() {
-    var KEY = 'veia-theme';
-    var root = document.documentElement;
-    var saved = localStorage.getItem(KEY) || 'natural';
-    
-    function applyTheme(theme) {
-      if (theme === 'resonancia') {
-        root.style.setProperty('--as-clr-pr-1', '#4338CA');
-        root.style.setProperty('--as-clr-pr-3', '#312E81');
-        root.style.setProperty('--veia-primary', '#4338CA');
-        root.style.setProperty('--veia-primary-d', '#312E81');
-        root.style.setProperty('--veia-accent', '#22D3EE');
-        root.style.setProperty('--veia-bg', '#F8FAFC');
-        root.style.setProperty('--veia-surface-2', '#EEF0FB');
-        root.style.setProperty('--veia-border', '#E2E5F2');
-        root.style.setProperty('--veia-hero-grad', 'linear-gradient(135deg, #312E81 0%, #4338CA 55%, #7C3AED 100%)');
-      } else {
-        root.style.setProperty('--as-clr-pr-1', '#2D6A4F');
-        root.style.setProperty('--as-clr-pr-3', '#1B4332');
-        root.style.setProperty('--veia-primary', '#2D6A4F');
-        root.style.setProperty('--veia-primary-d', '#1B4332');
-        root.style.setProperty('--veia-accent', '#74C69D');
-        root.style.setProperty('--veia-bg', '#F4F1EA');
-        root.style.setProperty('--veia-surface-2', '#ECF1EA');
-        root.style.setProperty('--veia-border', '#DCE3DA');
-        root.style.setProperty('--veia-hero-grad', 'linear-gradient(135deg, #1B4332 0%, #2D6A4F 55%, #40916C 100%)');
-      }
-    }
-    
-    applyTheme(saved);
-
-    var toggle = document.getElementById('veiaThemeToggle');
-    if (toggle) {
-      toggle.textContent = saved === 'natural' ? '🌿' : '✦';
-      toggle.addEventListener('click', function() {
-        var next = saved === 'natural' ? 'resonancia' : 'natural';
-        saved = next;
-        localStorage.setItem(KEY, next);
-        applyTheme(next);
-        toggle.textContent = next === 'natural' ? '🌿' : '✦';
-        // Refresh WOW
-        if (typeof WOW !== 'undefined') { new WOW({boxClass:'wow',animateClass:'animated',offset:100,mobile:false}).init(); }
-      });
-    }
-
-    // Preloader hide
+  // Preloader hide
     window.addEventListener('load', function() {
       setTimeout(function() {
         var preloader = document.querySelector('.as-preloader');
