@@ -1,139 +1,773 @@
-<!DOCTYPE html>
-<html lang="es" data-theme="natural">
+<!doctype html>
+<html lang="es">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>VEIA · Que tu marca resuene</title>
   <meta name="description" content="VEIA: sitios web, redes sociales, diseño y soluciones de tecnología para negocios de Guadalajara. Lo hacemos contigo, sin complicaciones.">
+
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=2">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Mona+Sans:ital,wght@0,200..900;1,200..900&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Avista Theme CSS -->
+  <link rel="stylesheet" href="css/animate-min.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/magnific-popup.css">
+  <link rel="stylesheet" href="css/nice-select.css">
+  <link rel="stylesheet" href="css/swiper.min.css">
+  <link rel="stylesheet" href="css/fontawesome-min.css">
+  <link rel="stylesheet" href="css/odometer.min.css">
+  <link rel="stylesheet" href="css/avista-core.css">
+  <link rel="stylesheet" href="css/avista-companion.css">
+  <link rel="stylesheet" href="css/avista-extra.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- VEIA Custom Theme Colors (Avista-compatible) -->
+  <style id="veia-primary-color">
+    :root {
+      --as-clr-pr-1: #2D6A4F;
+      --as-clr-pr-3: #1B4332;
+      
+      /* VEIA brand tokens mapped to Avista */
+      --veia-bg: #F4F1EA;
+      --veia-surface: #FFFFFF;
+      --veia-surface-2: #ECF1EA;
+      --veia-text: #1B2A24;
+      --veia-muted: #54655B;
+      --veia-primary: #2D6A4F;
+      --veia-primary-d: #1B4332;
+      --veia-accent: #74C69D;
+      --veia-accent-2: #C97B5A;
+      --veia-border: #DCE3DA;
+      --veia-hero-grad: linear-gradient(135deg, #1B4332 0%, #2D6A4F 55%, #40916C 100%);
+    }
+    ::-webkit-scrollbar-thumb {
+      background-color: #2D6A4F;
+    }
+  </style>
+
+  <!-- VEIA overrides for Avista -->
+  <style>
+    /* Override Avista's orange/red with VEIA green */
+    :root {
+      --as-clr-pr-1: #2D6A4F !important;
+      --as-clr-pr-3: #1B4332 !important;
+    }
+    
+    /* Smooth theme transitions */
+    body { 
+      transition: background 0.3s ease, color 0.3s ease;
+      font-family: 'Inter', 'Mona Sans', sans-serif;
+    }
+    h1, h2, h3, h4, h5, h6, .as-h-1, .tx-title {
+      font-family: 'Poppins', 'Inter', sans-serif;
+    }
+    
+    /* Fix Avista preloader center icon */
+    .as-preloader .loader img { width: 32px; height: 32px; }
+    
+    /* Hero section custom tweaks */
+    .as-hero-3-big-title { 
+      font-size: clamp(4rem, 15vw, 12rem) !important;
+      -webkit-text-stroke: 1px rgba(45,106,79,0.15);
+    }
+    
+    /* Make buttons use VEIA green */
+    .as-pr-btn-3 .text::before { background: var(--veia-primary) !important; }
+    .as-pr-btn-3:hover .text::before { background: var(--veia-primary-d) !important; }
+    
+    /* Accent colors */
+    .as-subtitle-3 .text { color: var(--veia-primary) !important; }
+    .as-hero-3-active .active-text i { color: var(--veia-accent) !important; }
+    
+    /* Services section bg text */
+    .as-services-3-bg-text { color: rgba(45,106,79,0.06) !important; }
+    
+    /* Footer */
+    .as-footer-3-area { background: var(--veia-primary-d) !important; }
+    
+    /* Theme toggle button */
+    .veia-theme-toggle {
+      position: fixed;
+      bottom: 24px;
+      left: 24px;
+      z-index: 999;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.3);
+      background: var(--veia-primary);
+      color: #fff;
+      cursor: pointer;
+      font-size: 1.2rem;
+      display: grid;
+      place-items: center;
+      transition: transform 0.3s, background 0.3s;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    }
+    .veia-theme-toggle:hover {
+      transform: rotate(25deg) scale(1.1);
+    }
+
+    /* Custom card overrides for VEIA */
+    .veia-card {
+      background: var(--veia-surface);
+      border: 1px solid var(--veia-border);
+      border-radius: 16px;
+      padding: 28px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .veia-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+    }
+    .veia-card .ico {
+      width: 52px; height: 52px;
+      border-radius: 14px;
+      display: grid; place-items: center;
+      font-size: 1.5rem;
+      background: var(--veia-surface-2);
+      margin-bottom: 14px;
+    }
+    
+    /* Price cards */
+    .veia-plan {
+      background: var(--veia-surface);
+      border: 1px solid var(--veia-border);
+      border-radius: 16px;
+      padding: 32px 28px;
+      display: flex; flex-direction: column;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .veia-plan:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,0.1); }
+    .veia-plan.featured { 
+      border-color: var(--veia-primary); 
+      box-shadow: 0 8px 30px rgba(45,106,79,0.2);
+      transform: scale(1.03);
+    }
+    .veia-plan .price {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 2.2rem;
+      color: var(--veia-text);
+      margin: 8px 0;
+    }
+    .veia-plan .price small {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--veia-muted);
+    }
+    .veia-plan ul {
+      list-style: none;
+      margin: 18px 0 24px;
+      display: grid;
+      gap: 10px;
+    }
+    .veia-plan li {
+      padding-left: 26px;
+      position: relative;
+      font-size: 0.95rem;
+      color: var(--veia-text);
+    }
+    .veia-plan li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--veia-primary);
+      font-weight: 700;
+    }
+
+    /* Section backgrounds */
+    .veia-section-tint {
+      background: var(--veia-surface-2);
+    }
+    
+    /* Responsive grid for service cards */
+    .veia-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+    .veia-grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+    @media (max-width: 860px) {
+      .veia-grid-3, .veia-grid-2 {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    /* CTA band */
+    .veia-cta-band {
+      background: var(--veia-hero-grad);
+      color: #fff;
+      border-radius: 24px;
+      padding: 52px 40px;
+      text-align: center;
+    }
+    .veia-cta-band h2 { color: #fff; }
+    .veia-cta-band p { color: rgba(255,255,255,0.85); margin: 12px auto 24px; max-width: 520px; }
+
+    /* Override Avista background for sections */
+    .veia-light-bg { background: var(--veia-bg) !important; }
+    .veia-tint-bg { background: var(--veia-surface-2) !important; }
+    
+    /* WhatsApp button style */
+    .as-pr-btn-3.veia-btn-wa .text::before { background: #25D366 !important; }
+    
+    /* Hide Avista preloader after load */
+    .as-preloader.loaded { opacity: 0; pointer-events: none; }
+  </style>
+
+  <link rel="icon" href="images/fevicon-1.webp" sizes="32x32">
 </head>
-<body>
-  <header class="header">
-    <div class="container nav">
-      <a href="index.html" class="brand"><span class="dot"></span>VEIA</a>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="index.html" class="active">Inicio</a></li>
-        <li><a href="servicios.html">Servicios</a></li>
-        <li><a href="servicios-paquetes.html">Precios</a></li>
-        <li><a href="nosotros.html">Nosotros</a></li>
-        <li><a href="portafolio.html">Portafolio</a></li>
-        <li><a href="contacto.html">Contacto</a></li>
-      </ul>
-      <div class="nav-actions">
-        <button class="theme-toggle" id="themeToggle" title="Cambiar color" aria-label="Cambiar color">🌿</button>
-        <a href="contacto.html" class="btn btn--primary">Cotizar</a>
-        <button class="menu-btn" id="menuBtn" aria-label="Menú">☰</button>
+
+<body class="as-home-3 theme-avista veia-light-bg">
+
+<div class="page-wrapper">
+
+  <!-- preloader -->
+  <div class="as-preloader as-home-3">
+    <div class="as-preloader-wrap">
+      <div class="loader as-h-1">
+        <span class="loader_letter">V</span>
+        <span class="loader_letter">
+          <div style="width:28px;height:28px;border-radius:50%;background:var(--veia-accent);"></div>
+        </span>
+        <span class="loader_letter">E</span>
+        <span class="loader_letter">I</span>
+        <span class="loader_letter">A</span>
+        <span class="loader_letter">.</span>
+        <span class="loader_letter">.</span>
+        <span class="loader_letter">.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- back-to-top -->
+  <div class="wa-back-to-top wa_backToTop"><i class="fa-solid fa-angle-up"></i></div>
+
+  <!-- theme toggle -->
+  <button class="veia-theme-toggle" id="veiaThemeToggle" title="Cambiar tema" aria-label="Cambiar tema">🌿</button>
+
+  <!-- ============ HEADER ============ -->
+  <header class="as-header-3-area" style="position:sticky;top:0;z-index:100;background:rgba(244,241,234,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--veia-border);">
+    <div class="container as-container-1 text-center">
+      <div class="as-header-3-wrap">
+        <a href="#" class="tx-logo as-header-3-logo" style="display:flex;align-items:center;gap:8px;font-family:Poppins,sans-serif;font-weight:800;font-size:1.5rem;color:var(--veia-text);text-decoration:none;">
+          <span style="width:12px;height:12px;border-radius:50%;background:var(--veia-accent);display:inline-block;box-shadow:0 0 0 4px rgba(45,106,79,0.2);"></span> VEIA
+        </a>
+        <nav class="as-main-navigation as-header-3-menu d-none d-xl-block">
+          <ul class="nav navbar-nav">
+            <li><a href="#inicio" style="color:var(--veia-text);">Inicio</a></li>
+            <li><a href="#servicios" style="color:var(--veia-text);">Servicios</a></li>
+            <li><a href="#precios" style="color:var(--veia-text);">Precios</a></li>
+            <li><a href="#nosotros" style="color:var(--veia-text);">Nosotros</a></li>
+            <li><a href="#portafolio" style="color:var(--veia-text);">Portafolio</a></li>
+            <li><a href="#contacto" style="color:var(--veia-text);">Contacto</a></li>
+          </ul>
+        </nav>
+        <div class="as-header-3-action-link">
+          <a href="https://wa.me/525659898908?text=Hola%20VEIA" target="_blank" class="as-pr-btn-3 veia-btn-wa tx-button">
+            <span class="text" data-back="Cotizar" data-front="Cotizar"></span>
+          </a>
+          <button type="button" class="sr-offcanvas-btn-1 offcanvas_toggle d-xl-none d-inline-block" style="border:1px solid var(--veia-border);background:var(--veia-surface);border-radius:10px;">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+        </div>
       </div>
     </div>
   </header>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="container hero-grid">
-      <div>
-        <span class="eyebrow">Marketing y tecnología para tu negocio</span>
-        <h1>Que tu marca <span>resuene</span>.</h1>
-        <p>Llevamos tu negocio a internet sin complicaciones: tu sitio web, tus redes activas y herramientas que te hacen la vida más fácil. Lo hacemos <b>contigo</b>, paso a paso.</p>
-        <div class="hero-cta">
-          <a href="https://wa.me/525659898908?text=Hola%20VEIA,%20quiero%20informaci%C3%B3n" class="btn btn--wa btn--lg">Escríbenos por WhatsApp</a>
-          <a href="servicios.html" class="btn btn--ghost btn--lg">Ver servicios</a>
+  <!-- Mobile offcanvas -->
+  <div class="wa-offcanvas-area offcanvas_box_active">
+    <div class="wa-offcanvas-wrap">
+      <div class="wa-offcanvas-top">
+        <a href="#" class="tx-logo wa-offcanvas-top-logo" style="font-family:Poppins;font-weight:800;font-size:1.4rem;color:var(--veia-text);text-decoration:none;">VEIA</a>
+        <button class="wa-offcanvas-close offcanvas_box_close"><span></span><span></span></button>
+      </div>
+      <nav class="mobile-main-navigation mb-50">
+        <ul class="nav navbar-nav clearfix list-unstyled">
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#precios">Precios</a></li>
+          <li><a href="#nosotros">Nosotros</a></li>
+          <li><a href="#portafolio">Portafolio</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+      <div class="wa-offcanvas-social">
+        <h6 class="wa-offcanvas-social-title as-h-1">Síguenos:</h6>
+        <div class="wa-offcanvas-social-flex d-flex flex-wrap">
+          <a class="wa-offcanvas-social-link" href="#"><i class="fab fa-whatsapp"></i></a>
+          <a class="wa-offcanvas-social-link" href="#"><i class="fab fa-facebook-f"></i></a>
+          <a class="wa-offcanvas-social-link" href="#"><i class="fab fa-instagram"></i></a>
         </div>
-        <div class="trust">
-          <span>📍 Hecho en <b>Guadalajara</b></span>
-          <span>🤝 <b>Lo hacemos contigo</b></span>
-          <span>🌱 Ideal si <b>vas empezando</b></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="wa-overly"></div>
+
+  <!-- ============ HERO ============ -->
+  <section id="inicio">
+    <div class="as-hero-3-height tx-section">
+      <div class="as-hero-3-pin">
+        <section class="as-hero-3-area wa-fix wa-p-relative">
+          <div class="container as-container-1">
+            <div class="as-hero-3-top">
+              <div class="as-hero-3-contact">
+                <h3 class="as-h-1 title" style="font-size:1rem;">📍 Guadalajara</h3>
+                <a href="https://wa.me/525659898908" class="link-elm as-p-1">56 5989 8908</a>
+              </div>
+              <div class="as-hero-3-active as-hero-1-active">
+                <p class="as-h-1 active-text"><i class="fas fa-circle" style="color:var(--veia-accent)!important;"></i> Hecho en Jalisco</p>
+              </div>
+              <div class="as-hero-3-top-right">
+                <div class="as-hero-3-social">
+                  <a href="#" class="link-elm as-p-1">Facebook</a>
+                  <a href="#" class="link-elm as-p-1">Instagram</a>
+                  <a href="#" class="link-elm as-p-1">WhatsApp</a>
+                </div>
+              </div>
+            </div>
+            <div class="as-hero-3-content">
+              <h4 class="as-h-1 title">
+                <span style="display:inline-block;width:36px;height:36px;border-radius:50%;background:var(--veia-accent);margin-right:10px;vertical-align:middle;box-shadow:0 0 0 6px rgba(45,106,79,0.15);"></span>
+                Marketing y Tecnología
+              </h4>
+              <p class="as-p-1 disc wa_text_shuffle wa-fix tx-description">
+                <span>Que tu marca <strong>resuene</strong>. Sin complicaciones.</span>
+              </p>
+            </div>
+            <h3 class="as-h-1 as-hero-3-big-title" style="color:var(--veia-text)!important;-webkit-text-stroke:1px rgba(45,106,79,0.12);">VEIA</h3>
+          </div>
+          <!-- Hero decorative images -->
+          <div class="as-hero-3-img-1 wa-img-cover" style="background:var(--veia-hero-grad);border-radius:24px;right:5%;">
+            <div style="width:100%;height:100%;display:grid;place-items:center;font-size:5rem;color:rgba(255,255,255,0.8);">≋</div>
+          </div>
+          <div class="as-hero-3-img-2 wa-img-cover" style="background:linear-gradient(135deg,var(--veia-accent),var(--veia-primary));border-radius:20px;right:18%;bottom:10%;">
+            <div style="width:100%;height:100%;display:grid;place-items:center;font-size:2rem;color:rgba(255,255,255,0.6);">✦</div>
+          </div>
+          <div class="as-hero-3-overly"><span class="overly-1"></span><span class="overly-2"></span></div>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ¿TE SUENA? / PROBLEMA ============ -->
+  <section class="as-about-3-area wa-fix wa-p-relative pb-95 tx-section veia-tint-bg" style="padding-top:80px;">
+    <div class="container as-container-1">
+      <div class="as-about-3-wrap mt-35">
+        <div class="as-about-3-left">
+          <h5 class="as-subtitle-3 tx-subTitle"><span class="text">¿Te suena?</span></h5>
+          <p class="as-p-1 as-about-3-disc tx-description" style="font-size:1.2rem;">
+            Si tu negocio <b>no está en internet</b>, están encontrando… a tu competencia.
+          </p>
+          <div class="as-about-3-author">
+            <div class="as-about-3-author-img wa-fix wa_add_class">
+              <div class="img-shape-1"></div><div class="img-shape-2"></div><div class="img-shape-3"></div>
+              <div class="main-img wa-fix" style="background:var(--veia-hero-grad);width:80px;height:80px;border-radius:50%;display:grid;place-items:center;font-size:2rem;">🌱</div>
+            </div>
+            <div class="as-about-3-author-content">
+              <h5 class="as-h-1 author-name">VEIA</h5>
+              <p class="as-p-1 author-dg">Hecho en Guadalajara</p>
+            </div>
+          </div>
+        </div>
+        <div class="as-about-3-middle-line"></div>
+        <div class="as-about-3-right">
+          <h2 class="tx-title as-about-3-sec-title as-h-1 wa_title_spilt_1" style="font-size:1.6rem;">
+            Digitalizamos tu negocio paso a paso: desde tu primera página web hasta herramientas a la medida.
+          </h2>
+          <div class="as-about-3-card-wrap">
+            <div class="as-about-3-card wow fadeInRight2">
+              <div class="title-x-icon">
+                <h3 class="as-h-1 title">🔍 No apareces en Google</h3>
+                <div class="icon"><span style="font-size:2rem;">📱</span></div>
+              </div>
+              <p class="as-p-1 disc">La gente te busca en el celular y no te encuentra (ni en el mapa).</p>
+            </div>
+            <div class="as-about-3-card wow fadeInRight2" data-wow-delay=".2s">
+              <div class="title-x-icon">
+                <h3 class="as-h-1 title">🌐 No tienes página web</h3>
+                <div class="icon"><span style="font-size:2rem;">💻</span></div>
+              </div>
+              <p class="as-p-1 disc">O la que tienes está vieja y no se ve bien en el teléfono.</p>
+            </div>
+            <div class="as-about-3-card wow fadeInRight2" data-wow-delay=".4s">
+              <div class="title-x-icon">
+                <h3 class="as-h-1 title">😴 Tus redes están dormidas</h3>
+                <div class="icon"><span style="font-size:2rem;">📲</span></div>
+              </div>
+              <p class="as-p-1 disc">Sin publicaciones ni quién responda los mensajes de tus clientes.</p>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="hero-art"><span class="wave">≋</span></div>
     </div>
   </section>
 
-  <!-- PROBLEMA -->
-  <section class="section section--tint">
-    <div class="container center">
-      <span class="eyebrow">¿Te suena?</span>
-      <h2>Si tu negocio no está en internet, están encontrando… a tu competencia.</h2>
-      <div class="grid grid-3 mt">
-        <div class="card"><div class="ico">🔍</div><h3>No apareces en Google</h3><p>La gente te busca en el celular y no te encuentra (ni en el mapa).</p></div>
-        <div class="card"><div class="ico">🌐</div><h3>No tienes página web</h3><p>O la que tienes está vieja y no se ve bien en el teléfono.</p></div>
-        <div class="card"><div class="ico">😴</div><h3>Tus redes están dormidas</h3><p>Sin publicaciones ni quién responda los mensajes de tus clientes.</p></div>
+  <!-- ============ SERVICIOS ============ -->
+  <section class="as-services-3-area wa-fix wa-p-relative pt-80 tx-section" id="servicios" style="background:var(--veia-bg);">
+    <h2 class="tx-title as-h-1 as-services-3-bg-text wow fadeInLeft2">Servicios</h2>
+    <div class="container as-container-1">
+      <div class="as-services-3-wrap">
+        <div class="as-services-3-left">
+          <h5 class="as-subtitle-3 tx-subTitle"><span class="text">Lo que hacemos</span></h5>
+          <p style="color:var(--veia-muted);font-size:1.1rem;margin-top:10px;">Todo para digitalizar tu negocio. Tú eliges hasta dónde.</p>
+        </div>
+        <div class="as-services-3-accordion" id="accordionServicios">
+          <!-- Servicio 1 -->
+          <div class="as-services-3-accordion-item wa_accordion_item active wow fadeInUp2">
+            <button class="item-title as-h-1" type="button" data-bs-toggle="collapse" data-bs-target="#svc-0" aria-expanded="true">
+              <span class="number">{<span class="just-number">01</span>}</span>
+              <span class="text">Sitio Express</span>
+              <span class="icon"><span>+</span></span>
+            </button>
+            <div id="svc-0" class="accordion-collapse collapse show" data-bs-parent="#accordionServicios">
+              <div class="item-wrap">
+                <div class="item-wrap-left">
+                  <p class="as-p-1 item-disc">Tu sitio web en una sola videollamada o presencial, hecho contigo y listo el mismo día. Sin complicaciones, sin tecnicismos.</p>
+                  <div class="item-tags">
+                    <a href="#" class="as-p-1 link-elm">Web</a>
+                    <a href="#" class="as-p-1 link-elm">Móvil</a>
+                    <a href="#" class="as-p-1 link-elm">SEO</a>
+                  </div>
+                </div>
+                <div class="item-img wa-fix wa-img-cover" style="background:var(--veia-hero-grad);display:grid;place-items:center;font-size:4rem;">⚡</div>
+              </div>
+            </div>
+          </div>
+          <!-- Servicio 2 -->
+          <div class="as-services-3-accordion-item wa_accordion_item wow fadeInUp2" data-wow-delay=".15s">
+            <button class="item-title as-h-1 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#svc-1">
+              <span class="number">{<span class="just-number">02</span>}</span>
+              <span class="text">Redes y Marketing</span>
+              <span class="icon"><span>+</span></span>
+            </button>
+            <div id="svc-1" class="accordion-collapse collapse" data-bs-parent="#accordionServicios">
+              <div class="item-wrap">
+                <div class="item-wrap-left">
+                  <p class="as-p-1 item-disc">Mantenemos tus redes activas, creamos contenido y atraemos clientes. Respondemos mensajes, publicamos, y hacemos que tu marca destaque.</p>
+                  <div class="item-tags">
+                    <a href="#" class="as-p-1 link-elm">Facebook</a>
+                    <a href="#" class="as-p-1 link-elm">Instagram</a>
+                    <a href="#" class="as-p-1 link-elm">TikTok</a>
+                  </div>
+                </div>
+                <div class="item-img wa-fix wa-img-cover" style="background:linear-gradient(135deg,var(--veia-accent),var(--veia-primary-d));display:grid;place-items:center;font-size:4rem;">📲</div>
+              </div>
+            </div>
+          </div>
+          <!-- Servicio 3 -->
+          <div class="as-services-3-accordion-item wa_accordion_item wow fadeInUp2" data-wow-delay=".3s">
+            <button class="item-title as-h-1 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#svc-2">
+              <span class="number">{<span class="just-number">03</span>}</span>
+              <span class="text">Diseño y Branding</span>
+              <span class="icon"><span>+</span></span>
+            </button>
+            <div id="svc-2" class="accordion-collapse collapse" data-bs-parent="#accordionServicios">
+              <div class="item-wrap">
+                <div class="item-wrap-left">
+                  <p class="as-p-1 item-disc">Tu logo e identidad para que tu negocio se vea serio y memorable. Diseñamos todo: desde tarjetas de presentación hasta empaques.</p>
+                  <div class="item-tags">
+                    <a href="#" class="as-p-1 link-elm">Logo</a>
+                    <a href="#" class="as-p-1 link-elm">Identidad</a>
+                    <a href="#" class="as-p-1 link-elm">Impresos</a>
+                  </div>
+                </div>
+                <div class="item-img wa-fix wa-img-cover" style="background:linear-gradient(135deg,#C97B5A,#2D6A4F);display:grid;place-items:center;font-size:4rem;">🎨</div>
+              </div>
+            </div>
+          </div>
+          <!-- Servicio 4 -->
+          <div class="as-services-3-accordion-item wa_accordion_item wow fadeInUp2" data-wow-delay=".45s">
+            <button class="item-title as-h-1 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#svc-3">
+              <span class="number">{<span class="just-number">04</span>}</span>
+              <span class="text">Soluciones a la Medida</span>
+              <span class="icon"><span>+</span></span>
+            </button>
+            <div id="svc-3" class="accordion-collapse collapse" data-bs-parent="#accordionServicios">
+              <div class="item-wrap">
+                <div class="item-wrap-left">
+                  <p class="as-p-1 item-disc">Herramientas para tu negocio (inventario, citas, ventas) sin pagar un ERP gigante. Infraestructura, redes, equipos y respaldos que sí funcionan.</p>
+                  <div class="item-tags">
+                    <a href="#" class="as-p-1 link-elm">Inventario</a>
+                    <a href="#" class="as-p-1 link-elm">Citas</a>
+                    <a href="#" class="as-p-1 link-elm">IT</a>
+                  </div>
+                </div>
+                <div class="item-img wa-fix wa-img-cover" style="background:linear-gradient(135deg,#1B4332,#40916C);display:grid;place-items:center;font-size:4rem;">⚙️</div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- SERVICIOS -->
-  <section class="section">
-    <div class="container">
-      <div class="center"><span class="eyebrow">Lo que hacemos</span><h2>Todo para digitalizar tu negocio</h2><p class="lead">Desde tu primera página hasta herramientas a la medida. Tú eliges hasta dónde.</p></div>
-      <div class="grid grid-3 mt">
-        <div class="card"><div class="ico">⚡</div><h3>Sitio Express</h3><p>Tu sitio web en una sola videollamada o presencial, hecho contigo y listo el mismo día.</p></div>
-        <div class="card"><div class="ico">📲</div><h3>Redes y marketing</h3><p>Mantenemos tus redes activas, creamos contenido y atraemos clientes.</p></div>
-        <div class="card"><div class="ico">🎨</div><h3>Diseño y branding</h3><p>Tu logo e identidad para que tu negocio se vea serio y memorable.</p></div>
-        <div class="card"><div class="ico">📸</div><h3>Foto y video</h3><p>Fotografía profesional y video corto que hacen que tu marca destaque.</p></div>
-        <div class="card"><div class="ico">⚙️</div><h3>Soluciones a la medida</h3><p>Herramientas para tu negocio (inventario, citas, ventas) sin pagar un ERP gigante.</p></div>
-        <div class="card"><div class="ico">🖧</div><h3>Infraestructura y redes</h3><p>Diagnóstico, internet, equipos y respaldos que sí funcionan.</p></div>
+  <!-- ============ CÓMO TRABAJAMOS ============ -->
+  <section class="tx-section veia-tint-bg" style="padding:80px 0;" id="nosotros">
+    <div class="container as-container-1">
+      <div style="text-align:center;margin-bottom:50px;">
+        <h5 class="as-subtitle-3 tx-subTitle"><span class="text">Sin complicaciones</span></h5>
+        <h2 class="tx-title as-h-1" style="font-size:2rem;">Cómo trabajamos</h2>
       </div>
-      <div class="center mt"><a href="servicios.html" class="btn btn--primary">Ver todos los servicios</a></div>
+      <div class="veia-grid-3">
+        <div class="veia-card" style="text-align:center;">
+          <div style="width:52px;height:52px;border-radius:50%;background:var(--veia-primary);color:#fff;display:grid;place-items:center;font-size:1.3rem;font-weight:700;margin:0 auto 14px;">1</div>
+          <h3 style="font-family:Poppins,sans-serif;font-size:1.2rem;margin-bottom:8px;">Platicamos</h3>
+          <p style="color:var(--veia-muted);">Entendemos tu negocio y qué necesitas. En español claro, sin tecnicismos.</p>
+        </div>
+        <div class="veia-card" style="text-align:center;">
+          <div style="width:52px;height:52px;border-radius:50%;background:var(--veia-primary);color:#fff;display:grid;place-items:center;font-size:1.3rem;font-weight:700;margin:0 auto 14px;">2</div>
+          <h3 style="font-family:Poppins,sans-serif;font-size:1.2rem;margin-bottom:8px;">Lo hacemos contigo</h3>
+          <p style="color:var(--veia-muted);">Avanzamos paso a paso. Aprendes en el camino y quedas al mando.</p>
+        </div>
+        <div class="veia-card" style="text-align:center;">
+          <div style="width:52px;height:52px;border-radius:50%;background:var(--veia-primary);color:#fff;display:grid;place-items:center;font-size:1.3rem;font-weight:700;margin:0 auto 14px;">3</div>
+          <h3 style="font-family:Poppins,sans-serif;font-size:1.2rem;margin-bottom:8px;">Quedas listo</h3>
+          <p style="color:var(--veia-muted);">Tu negocio en internet, con apoyo nuestro cuando lo necesites.</p>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- CÓMO -->
-  <section class="section section--tint">
-    <div class="container">
-      <div class="center"><span class="eyebrow">Sin complicaciones</span><h2>Cómo trabajamos</h2></div>
-      <div class="grid grid-3 mt">
-        <div class="card step"><h3>Platicamos</h3><p>Entendemos tu negocio y qué necesitas. En español claro, sin tecnicismos.</p></div>
-        <div class="card step"><h3>Lo hacemos contigo</h3><p>Avanzamos paso a paso. Aprendes en el camino y quedas al mando.</p></div>
-        <div class="card step"><h3>Quedas listo</h3><p>Tu negocio en internet, con apoyo nuestro cuando lo necesites.</p></div>
+  <!-- ============ PRECIOS ============ -->
+  <section class="tx-section" style="padding:80px 0;background:var(--veia-bg);" id="precios">
+    <div class="container as-container-1">
+      <div style="text-align:center;margin-bottom:50px;">
+        <h5 class="as-subtitle-3 tx-subTitle"><span class="text">Inversión clara</span></h5>
+        <h2 class="tx-title as-h-1" style="font-size:2rem;">Precios transparentes</h2>
+        <p style="color:var(--veia-muted);max-width:540px;margin:10px auto 0;">Elige lo que tu negocio necesita. Si no ves lo que buscas, <b>platicamos sin compromiso</b>.</p>
+      </div>
+      <div class="veia-grid-3">
+        <!-- Plan Básico -->
+        <div class="veia-plan">
+          <h3 style="font-family:Poppins,sans-serif;">Plan Básico</h3>
+          <div class="price">$2,500 <small>MXN</small></div>
+          <p style="color:var(--veia-muted);font-size:0.9rem;">Pago único</p>
+          <ul>
+            <li>Sitio web de 1 página</li>
+            <li>Diseño responsive</li>
+            <li>Formulario de contacto</li>
+            <li>Hosting 1 año</li>
+          </ul>
+          <a href="https://wa.me/525659898908" target="_blank" class="as-pr-btn-3 veia-btn-wa" style="margin-top:auto;">
+            <span class="text" data-back="Lo quiero" data-front="Lo quiero"></span>
+          </a>
+        </div>
+        <!-- Plan Profesional -->
+        <div class="veia-plan featured">
+          <h3 style="font-family:Poppins,sans-serif;">Plan Pro</h3>
+          <div class="price">$5,500 <small>MXN</small></div>
+          <p style="color:var(--veia-muted);font-size:0.9rem;">Pago único</p>
+          <ul>
+            <li>Sitio web hasta 5 páginas</li>
+            <li>Diseño personalizado</li>
+            <li>SEO básico incluido</li>
+            <li>Integración redes sociales</li>
+            <li>Hosting 1 año + SSL</li>
+          </ul>
+          <a href="https://wa.me/525659898908" target="_blank" class="as-pr-btn-3" style="margin-top:auto;">
+            <span class="text" data-back="Lo quiero" data-front="Lo quiero"></span>
+          </a>
+        </div>
+        <!-- Plan Premium -->
+        <div class="veia-plan">
+          <h3 style="font-family:Poppins,sans-serif;">Plan Premium</h3>
+          <div class="price">$12,000 <small>MXN</small></div>
+          <p style="color:var(--veia-muted);font-size:0.9rem;">Pago único</p>
+          <ul>
+            <li>Sitio web completo</li>
+            <li>Tienda en línea</li>
+            <li>SEO avanzado</li>
+            <li>Branding + logo</li>
+            <li>Redes sociales 3 meses</li>
+            <li>Hosting 1 año + dominio</li>
+          </ul>
+          <a href="https://wa.me/525659898908" target="_blank" class="as-pr-btn-3 veia-btn-wa" style="margin-top:auto;">
+            <span class="text" data-back="Lo quiero" data-front="Lo quiero"></span>
+          </a>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="section">
-    <div class="container">
-      <div class="cta-band">
-        <h2>¿Listo para que más clientes te encuentren?</h2>
+  <!-- ============ PORTAFOLIO ============ -->
+  <section class="tx-section veia-tint-bg" style="padding:80px 0;" id="portafolio">
+    <div class="container as-container-1">
+      <div style="text-align:center;margin-bottom:50px;">
+        <h5 class="as-subtitle-3 tx-subTitle"><span class="text">Lo que hemos hecho</span></h5>
+        <h2 class="tx-title as-h-1" style="font-size:2rem;">Portafolio</h2>
+      </div>
+      <div class="veia-grid-3">
+        <div class="veia-card" style="text-align:center;padding:40px 20px;">
+          <div style="font-size:3rem;margin-bottom:12px;">💅</div>
+          <h3 style="font-family:Poppins,sans-serif;">Salón de Belleza</h3>
+          <p style="color:var(--veia-muted);">Sitio web + reservas online</p>
+          <a href="plantillas/belleza/index.html" class="as-pr-btn-3" style="margin-top:14px;display:inline-flex;">
+            <span class="text" data-back="Ver demo" data-front="Ver demo"></span>
+          </a>
+        </div>
+        <div class="veia-card" style="text-align:center;padding:40px 20px;">
+          <div style="font-size:3rem;margin-bottom:12px;">🏥</div>
+          <h3 style="font-family:Poppins,sans-serif;">Consultorio</h3>
+          <p style="color:var(--veia-muted);">Web + agenda de citas</p>
+          <a href="plantillas/salud/index.html" class="as-pr-btn-3" style="margin-top:14px;display:inline-flex;">
+            <span class="text" data-back="Ver demo" data-front="Ver demo"></span>
+          </a>
+        </div>
+        <div class="veia-card" style="text-align:center;padding:40px 20px;">
+          <div style="font-size:3rem;margin-bottom:12px;">🔧</div>
+          <h3 style="font-family:Poppins,sans-serif;">Taller Mecánico</h3>
+          <p style="color:var(--veia-muted);">Web + catálogo de servicios</p>
+          <a href="plantillas/taller/index.html" class="as-pr-btn-3" style="margin-top:14px;display:inline-flex;">
+            <span class="text" data-back="Ver demo" data-front="Ver demo"></span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA BAND ============ -->
+  <section class="tx-section" style="padding:40px 0 80px;background:var(--veia-bg);" id="contacto">
+    <div class="container as-container-1">
+      <div class="veia-cta-band">
+        <h2 style="font-family:Poppins,sans-serif;">¿Listo para que más clientes te encuentren?</h2>
         <p>Te decimos qué le conviene a tu negocio, sin compromiso.</p>
-        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-          <a href="https://wa.me/525659898908?text=Hola%20VEIA,%20quiero%20una%20cotizaci%C3%B3n" class="btn btn--wa btn--lg">Cotiza por WhatsApp</a>
-          <a href="https://calendar.app.google/VWkFMP8V77mzLEN7A" target="_blank" rel="noopener" class="btn btn--light btn--lg">📅 O agenda una llamada</a>
+        <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+          <a href="https://wa.me/525659898908?text=Hola%20VEIA,%20quiero%20informaci%C3%B3n" target="_blank" class="as-pr-btn-3 veia-btn-wa" style="background:#25D366;">
+            <span class="text" data-back="Cotiza por WhatsApp" data-front="Cotiza por WhatsApp"></span>
+          </a>
+          <a href="https://calendar.app.google/VWkFMP8V77mzLEN7A" target="_blank" rel="noopener" class="as-pr-btn-3" style="background:#fff;color:var(--veia-primary-d);">
+            <span class="text" data-back="Agenda una llamada" data-front="Agenda una llamada" style="color:var(--veia-primary-d);"></span>
+          </a>
         </div>
       </div>
     </div>
   </section>
 
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <div class="brand"><span class="dot"></span>VEIA</div>
-          <p style="color:rgba(255,255,255,.75)">Que tu marca resuene. Llevamos tu negocio a internet, sin complicaciones.</p>
+  <!-- ============ FOOTER ============ -->
+  <footer class="as-footer-3-area wa-p-relative pb-100 tx-section" style="background:var(--veia-primary-d)!important;">
+    <div class="as-footer-3-bg-line"><span class="line"></span><span class="line"></span><span class="line"></span></div>
+    <div class="container as-container-1">
+      <div class="as-footer-3-wrap mb-70" style="padding-top:60px;">
+        <div class="as-footer-3-circle-text">
+          <div style="width:40px;height:40px;border-radius:50%;background:var(--veia-accent);"></div>
+          <span style="color:#fff;font-family:Poppins;font-weight:800;font-size:1.3rem;">VEIA</span>
         </div>
-        <div>
-          <h4>Servicios</h4>
-          <ul>
-            <li><a href="servicios.html">Sitio Express</a></li>
-            <li><a href="servicios.html">Redes y marketing</a></li>
-            <li><a href="servicios.html">Diseño y branding</a></li>
-            <li><a href="servicios.html">Soluciones IT</a></li>
-          </ul>
+        <div class="as-footer-3-contact">
+          <p class="as-p-1 title has-shuffle-onscroll" style="color:rgba(255,255,255,0.8);">CONTACTO</p>
+          <h4 class="link-el-1 as-p-1"><a href="https://wa.me/525659898908" style="color:#fff;">56 5989 8908</a></h4>
+          <h5 class="link-el-2 as-p-1 has-shuffle-onscroll"><a href="mailto:contacto@veia.com.mx" style="color:rgba(255,255,255,0.8);">contacto@veia.com.mx</a></h5>
         </div>
-        <div>
-          <h4>Contacto</h4>
-          <ul>
-            <li><a href="https://wa.me/525659898908">WhatsApp: 56 5989 8908</a></li>
-            <li><a href="mailto:contacto@veia.com.mx">contacto@veia.com.mx</a></li>
-            <li>Guadalajara · Zapopan, Jal.</li>
-          </ul>
-        </div>
+        <ul class="wa-ul as-footer-3-menu">
+          <li class="as-p-1"><a href="#servicios" style="color:rgba(255,255,255,0.8);">Servicios</a></li>
+          <li class="as-p-1"><a href="#precios" style="color:rgba(255,255,255,0.8);">Precios</a></li>
+          <li class="as-p-1"><a href="#nosotros" style="color:rgba(255,255,255,0.8);">Nosotros</a></li>
+          <li class="as-p-1"><a href="#portafolio" style="color:rgba(255,255,255,0.8);">Portafolio</a></li>
+          <li class="as-p-1"><a href="#contacto" style="color:rgba(255,255,255,0.8);">Contacto</a></li>
+        </ul>
       </div>
-      <div class="footer-bottom">© 2026 VEIA · Guadalajara · Zapopan, Jal.</div>
+      <p class="as-p-1 as-footer-3-copyright" style="color:rgba(255,255,255,0.6);">© 2026 VEIA · Guadalajara · Zapopan, Jal. Todos los derechos reservados.</p>
+      <div class="as-footer-3-bottom">
+        <div class="as-footer-3-big-text">
+          <h2 class="as-h-1 title wa-split-up" style="color:#fff;">Que tu marca resuene</h2>
+        </div>
+        <p class="as-p-1 as-footer-3-made" style="color:rgba(255,255,255,0.6);">Hecho con <i class="fa-solid fa-heart" style="color:var(--veia-accent-2);"></i> en Guadalajara</p>
+      </div>
     </div>
   </footer>
-  <script src="js/main.js"></script>
+
+</div><!-- page-wrapper end -->
+
+<!-- SCRIPTS -->
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery-migrate.min.js"></script>
+<script src="js/bootstrap-min.js"></script>
+<script src="js/swiper.min.js"></script>
+<script src="js/lenis.min.js"></script>
+<script src="js/wow-min.js"></script>
+<script src="js/odometer.min.js"></script>
+<script src="js/nice-select.min.js"></script>
+<script src="js/jquery.marquee.min.js"></script>
+<script src="js/magnific-popup.min.js"></script>
+<script src="js/SplitText.min.js"></script>
+<script src="js/gsap.min.js"></script>
+<script src="js/customEase.min.js"></script>
+<script src="js/appear.js"></script>
+<script src="js/scrollTrigger.min.js"></script>
+<script src="js/pixi.min.js"></script>
+<script src="js/cursor.js"></script>
+<script src="js/touchspin.js"></script>
+<script src="js/avista-custom.js"></script>
+<script src="js/avista-core.js"></script>
+
+<script>
+  // Init WOW animations
+  new WOW({ boxClass: 'wow', animateClass: 'animated', offset: 100, mobile: false }).init();
+
+  // Theme toggle for VEIA
+  (function() {
+    var KEY = 'veia-theme';
+    var root = document.documentElement;
+    var saved = localStorage.getItem(KEY) || 'natural';
+    
+    function applyTheme(theme) {
+      if (theme === 'resonancia') {
+        root.style.setProperty('--as-clr-pr-1', '#4338CA');
+        root.style.setProperty('--as-clr-pr-3', '#312E81');
+        root.style.setProperty('--veia-primary', '#4338CA');
+        root.style.setProperty('--veia-primary-d', '#312E81');
+        root.style.setProperty('--veia-accent', '#22D3EE');
+        root.style.setProperty('--veia-bg', '#F8FAFC');
+        root.style.setProperty('--veia-surface-2', '#EEF0FB');
+        root.style.setProperty('--veia-border', '#E2E5F2');
+        root.style.setProperty('--veia-hero-grad', 'linear-gradient(135deg, #312E81 0%, #4338CA 55%, #7C3AED 100%)');
+      } else {
+        root.style.setProperty('--as-clr-pr-1', '#2D6A4F');
+        root.style.setProperty('--as-clr-pr-3', '#1B4332');
+        root.style.setProperty('--veia-primary', '#2D6A4F');
+        root.style.setProperty('--veia-primary-d', '#1B4332');
+        root.style.setProperty('--veia-accent', '#74C69D');
+        root.style.setProperty('--veia-bg', '#F4F1EA');
+        root.style.setProperty('--veia-surface-2', '#ECF1EA');
+        root.style.setProperty('--veia-border', '#DCE3DA');
+        root.style.setProperty('--veia-hero-grad', 'linear-gradient(135deg, #1B4332 0%, #2D6A4F 55%, #40916C 100%)');
+      }
+    }
+    
+    applyTheme(saved);
+
+    var toggle = document.getElementById('veiaThemeToggle');
+    if (toggle) {
+      toggle.textContent = saved === 'natural' ? '🌿' : '✦';
+      toggle.addEventListener('click', function() {
+        var next = saved === 'natural' ? 'resonancia' : 'natural';
+        saved = next;
+        localStorage.setItem(KEY, next);
+        applyTheme(next);
+        toggle.textContent = next === 'natural' ? '🌿' : '✦';
+        // Refresh WOW
+        if (typeof WOW !== 'undefined') { new WOW({boxClass:'wow',animateClass:'animated',offset:100,mobile:false}).init(); }
+      });
+    }
+
+    // Preloader hide
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        var preloader = document.querySelector('.as-preloader');
+        if (preloader) preloader.classList.add('loaded');
+      }, 800);
+    });
+  })();
+</script>
+
 </body>
 </html>
