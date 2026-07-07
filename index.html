@@ -131,8 +131,9 @@
     
     /* Custom card overrides for VEIA */
     .veia-card {
-      background: var(--veia-surface);
-      border: 1px solid var(--veia-border);
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.6);
       border-radius: 16px;
       padding: 28px;
       transition: transform 0.3s, box-shadow 0.3s;
@@ -152,17 +153,19 @@
     
     /* Price cards */
     .veia-plan {
-      background: var(--veia-surface);
-      border: 1px solid var(--veia-border);
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.6);
       border-radius: 16px;
       padding: 32px 28px;
       display: flex; flex-direction: column;
       transition: transform 0.3s, box-shadow 0.3s;
     }
-    .veia-plan:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,0.1); }
+    .veia-plan:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(252,119,62,0.15); }
     .veia-plan.featured { 
+      background: rgba(255,255,255,0.95);
       border-color: #fc773e; 
-      box-shadow: 0 8px 30px rgba(252,119,62,0.2);
+      box-shadow: 0 8px 30px rgba(252,119,62,0.25);
       transform: scale(1.03);
     }
     .veia-plan .price {
@@ -197,10 +200,16 @@
       font-weight: 700;
     }
 
-    /* Section backgrounds */
+    /* Section backgrounds - gradients locochones */
     .veia-section-tint {
       background: var(--veia-surface-2);
     }
+    .grad-about { background: linear-gradient(160deg, #9ec6ab 0%, #faa785 50%, #fff 100%) !important; }
+    .grad-services { background: linear-gradient(200deg, #faa785 0%, #fc773e 30%, #fff 100%) !important; }
+    .grad-pasos { background: linear-gradient(150deg, #a5bb1a 0%, #9ec6ab 50%, #fff 100%) !important; }
+    .grad-precios { background: linear-gradient(180deg, #fc773e 0%, #faa785 50%, #fff 100%) !important; }
+    .grad-portafolio { background: linear-gradient(160deg, #f7b046 0%, #9ec6ab 60%, #fff 100%) !important; }
+    .grad-cta { background: linear-gradient(135deg, #fc773e, #f7b046) !important; }
     
     /* Responsive grid for service cards */
     .veia-grid-3 {
@@ -285,7 +294,7 @@
   <div class="wa-back-to-top wa_backToTop"><i class="fa-solid fa-angle-up"></i></div>
 
   <!-- ============ HEADER ============ -->
-  <header style="position:sticky;top:0;z-index:100;background:var(--veia-bg);padding:14px 0;border-bottom:1px solid var(--veia-border);">
+  <header style="position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.9);backdrop-filter:blur(12px);padding:14px 0;border-bottom:1px solid rgba(250,167,133,0.3);">
     <div style="display:flex;align-items:center;justify-content:space-between;max-width:1200px;margin:0 auto;padding:0 28px;">
       <a href="#" style="display:flex;align-items:center;gap:8px;font-family:Poppins,sans-serif;font-weight:800;font-size:1.5rem;color:var(--veia-text);text-decoration:none;">
         <span style="width:12px;height:12px;border-radius:50%;background:var(--veia-accent);display:inline-block;box-shadow:0 0 0 4px rgba(45,106,79,0.2);"></span> VEIA
@@ -384,7 +393,7 @@
   </section>
 
   <!-- ============ ¿TE SUENA? / PROBLEMA ============ -->
-  <section class="as-about-3-area wa-fix wa-p-relative pb-95 tx-section veia-tint-bg" style="padding-top:80px;">
+  <section class="as-about-3-area wa-fix wa-p-relative pb-95 tx-section grad-about" style="padding-top:80px;">
     <div class="container as-container-1">
       <div class="as-about-3-wrap mt-35">
         <div class="as-about-3-left">
@@ -437,7 +446,7 @@
   </section>
 
   <!-- ============ SERVICIOS ============ -->
-  <section class="as-services-3-area wa-fix wa-p-relative pt-80 tx-section" id="servicios" style="background:var(--veia-bg);">
+  <section class="as-services-3-area wa-fix wa-p-relative pt-80 tx-section grad-services" id="servicios">
     <h2 class="tx-title as-h-1 as-services-3-bg-text wow fadeInLeft2">Servicios</h2>
     <div class="container as-container-1">
       <div class="as-services-3-wrap">
@@ -536,7 +545,7 @@
   </section>
 
   <!-- ============ CÓMO TRABAJAMOS ============ -->
-  <section class="tx-section veia-tint-bg" style="padding:80px 0;" id="nosotros">
+  <section class="tx-section grad-pasos" style="padding:80px 0;" id="nosotros">
     <div class="container as-container-1">
       <div style="text-align:center;margin-bottom:50px;">
         <h5 class="as-subtitle-3 tx-subTitle"><span class="text">Sin complicaciones</span></h5>
@@ -563,7 +572,7 @@
   </section>
 
   <!-- ============ PRECIOS ============ -->
-  <section class="tx-section" style="padding:80px 0;background:var(--veia-bg);" id="precios">
+  <section class="tx-section grad-precios" style="padding:80px 0;" id="precios">
     <div class="container as-container-1">
       <div style="text-align:center;margin-bottom:50px;">
         <h5 class="as-subtitle-3 tx-subTitle"><span class="text">Inversión clara</span></h5>
@@ -624,7 +633,7 @@
   </section>
 
   <!-- ============ PORTAFOLIO ============ -->
-  <section class="tx-section veia-tint-bg" style="padding:80px 0;" id="portafolio">
+  <section class="tx-section grad-portafolio" style="padding:80px 0;" id="portafolio">
     <div class="container as-container-1">
       <div style="text-align:center;margin-bottom:50px;">
         <h5 class="as-subtitle-3 tx-subTitle"><span class="text">Lo que hemos hecho</span></h5>
@@ -715,7 +724,7 @@
   </section>
 
   <!-- ============ CTA BAND ============ -->
-  <section class="tx-section" style="padding:40px 0 80px;background:var(--veia-bg);" id="contacto">
+  <section class="tx-section" style="padding:40px 0 80px;background:#fff;" id="contacto">
     <div class="container as-container-1">
       <div class="veia-cta-band">
         <h2 style="font-family:Poppins,sans-serif;">¿Listo para que más clientes te encuentren?</h2>
