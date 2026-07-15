@@ -20,12 +20,6 @@ const pasos = [
   { n: '3', t: 'Quedas listo', d: 'Tu negocio en internet, con apoyo nuestro cuando lo necesites.' },
 ];
 
-const planes = [
-  { nombre: 'Básico', precio: '2,500', destacado: false, items: ['Sitio web de 1 página', 'Diseño responsive', 'Formulario de contacto', 'Hosting 1 año'] },
-  { nombre: 'Profesional', precio: '5,500', destacado: true, items: ['Sitio web hasta 5 páginas', 'Diseño personalizado', 'SEO básico incluido', 'Integración redes sociales', 'Hosting 1 año + SSL'] },
-  { nombre: 'Premium', precio: '12,000', destacado: false, items: ['Sitio web completo', 'Tienda en línea', 'SEO avanzado', 'Branding + logo', 'Redes sociales 3 meses', 'Hosting 1 año + dominio'] },
-];
-
 const clientes = [
   { img: '/images/logo-legend.webp', alt: 'Legend', txt: 'Desarrollo inmobiliario' },
   { img: '/images/logo-uditore-full.png', alt: 'Uditore', txt: 'Consultoría contable y fiscal' },
@@ -116,21 +110,34 @@ const demos = [
       <p class="lead">Elige lo que tu negocio necesita. Si no ves lo que buscas, <strong>platicamos sin compromiso.</strong></p>
     </div>
     <div class="container">
-      <div class="grid grid-3 mt-lg planes">
-        {planes.map((plan) => (
-          <article class:list={["plan", plan.destacado && "plan--destacado"]}>
-            {plan.destacado && <span class="plan-badge">Más popular</span>}
-            <h3 class="plan-nombre">{plan.nombre}</h3>
-            <div class="plan-precio">${plan.precio} <small>MXN</small></div>
-            <p class="plan-nota">Pago único</p>
-            <ul class="plan-lista">
-              {plan.items.map((it) => <li>{it}</li>)}
-            </ul>
-            <a href={WA} target="_blank" rel="noopener" class:list={["btn", "btn-block", !plan.destacado && "btn--ghost"]}>Lo quiero</a>
-          </article>
-        ))}
+      <div class="grid grid-2 mt-lg planes">
+        <article class="plan plan--destacado">
+          <span class="plan-badge">Lo más pedido</span>
+          <h3 class="plan-nombre">Sitio Express</h3>
+          <div class="plan-precio">$3,500 <small>pago único</small></div>
+          <p class="plan-nota">Tu sitio web en una sola llamada, hecho contigo y listo el mismo día.</p>
+          <ul class="plan-lista">
+            <li>Sesión de hasta 3 horas (en línea o presencial)</li>
+            <li>Lo armamos juntos y aprendes a usarlo</li>
+            <li>Queda en tu propia cuenta</li>
+            <li>Listo el mismo día</li>
+          </ul>
+          <a href="/servicios-paquetes.html" class="btn btn-block">Ver detalles</a>
+        </article>
+        <article class="plan">
+          <h3 class="plan-nombre">Planes mensuales</h3>
+          <div class="plan-precio">desde $1,200 <small>/mes</small></div>
+          <p class="plan-nota">Para mantener tu negocio activo en redes y creciendo mes a mes.</p>
+          <ul class="plan-lista">
+            <li><strong>Presencia</strong> — que te encuentren y te vean activo</li>
+            <li><strong>Activo</strong> — redes + atención a clientes</li>
+            <li><strong>Impulso</strong> — vende más con anuncios</li>
+            <li>IVA incluido, sin contratos enredados</li>
+          </ul>
+          <a href="/servicios-paquetes.html" class="btn btn-block btn--ghost">Ver planes</a>
+        </article>
       </div>
-      <div class="center" style="margin-top:40px"><a href="/servicios-paquetes.html" class="btn btn--lg btn--ghost">Ver precios completos y planes mensuales →</a></div>
+      <div class="center" style="margin-top:40px"><a href="/servicios-paquetes.html" class="btn btn--lg btn--ghost">Ver todos los precios y soluciones de TI →</a></div>
     </div>
   </section>
 
