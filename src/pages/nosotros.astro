@@ -1,0 +1,90 @@
+---
+import Base from '../layouts/Base.astro';
+
+const fundadores = [
+  { ini: 'JC', nombre: 'Julio Cubas', rol: 'Fundador · Tecnología y desarrollo web', desc: 'Administrador de sistemas e infraestructura. Hace tu sitio, tus herramientas a la medida y tus redes/equipos.' },
+  { ini: 'AP', nombre: 'Ana Paula Orozco', rol: 'Fundadora · Diseño y branding', desc: 'Diseñadora. Crea tu identidad, tus piezas y cuida que todo se vea hermoso y consistente.' },
+];
+const colaboradores = [
+  { ini: 'M', nombre: 'Maggie', rol: 'Publicidad y estudio de mercado' },
+  { ini: 'ES', nombre: 'Eli Soltero', rol: 'Fotografía y video' },
+  { ini: 'IC', nombre: 'Isaac', rol: 'Desarrollo de software' },
+];
+const valores = [
+  { i: '🤝', t: 'Lo hacemos contigo', d: 'Te explicamos todo en español claro y quedas al mando de tu negocio.' },
+  { i: '📍', t: 'Cercanía local', d: 'Somos de aquí. Nos importa que a los negocios de la zona les vaya bien.' },
+  { i: '✨', t: 'Simple y honesto', d: 'Solo lo que tu negocio necesita, a un precio justo, sin venderte de más.' },
+];
+---
+<Base current="nosotros" title="Nosotros · VEIA" description="Somos un equipo de Guadalajara que ayuda a negocios a tener presencia digital sin complicaciones.">
+
+  <section class="page-hero anim-grad">
+    <div class="aurora"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div>
+    <div class="container">
+      <span class="hero-eyebrow">Nosotros</span>
+      <h1 class="h2" style="color:#fff;max-width:16ch;margin-inline:auto">Tecnología y marketing con trato humano</h1>
+      <p class="lead" style="color:rgba(255,255,255,.95)">Somos un equipo de Guadalajara que ayuda a negocios que apenas empiezan —o que nunca dieron el salto digital— a tener su sitio, sus redes y sus herramientas. Sin tecnicismos y a tu lado.</p>
+    </div>
+  </section>
+
+  <section class="section bg-cream">
+    <div class="container center"><span class="eyebrow">El equipo</span><h2 class="h2">Quién hace tu proyecto</h2></div>
+    <div class="container">
+      <div class="grid grid-2 mt-lg">
+        {fundadores.map((m) => (
+          <article class="card center">
+            <div class="avatar">{m.ini}</div>
+            <h3>{m.nombre}</h3>
+            <div class="rol">{m.rol}</div>
+            <p>{m.desc}</p>
+          </article>
+        ))}
+      </div>
+      <div class="center" style="margin:44px 0 24px"><span class="badge">Con la colaboración de</span></div>
+      <div class="grid grid-3">
+        {colaboradores.map((m) => (
+          <article class="card center">
+            <div class="avatar avatar--sm">{m.ini}</div>
+            <h3>{m.nombre}</h3>
+            <div class="rol">{m.rol}</div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-cream2">
+    <div class="container center"><span class="eyebrow">Cómo somos</span><h2 class="h2">Lo que nos importa</h2></div>
+    <div class="container">
+      <div class="grid grid-3 mt-lg">
+        {valores.map((v) => (
+          <article class="card"><div class="ico">{v.i}</div><h3>{v.t}</h3><p>{v.d}</p></article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-cream">
+    <div class="container">
+      <div class="cta-band anim-grad">
+        <div class="aurora"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div>
+        <div class="cta-inner">
+          <h2 class="h2">¿Trabajamos juntos?</h2>
+          <p>Cuéntanos de tu negocio y te decimos cómo te podemos ayudar. Sin compromiso.</p>
+          <a href="/contacto.html" class="btn btn--lg btn--light">Hablemos</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Base>
+
+<style>
+  .avatar {
+    width: 96px; height: 96px; border-radius: 50%; margin: 0 auto 14px;
+    display: grid; place-items: center; font-family: 'Poppins', sans-serif; font-weight: 800;
+    font-size: 2rem; color: #fff; background: var(--grad-warm);
+  }
+  .avatar--sm { width: 72px; height: 72px; font-size: 1.5rem; }
+  .rol { color: var(--orange-d); font-weight: 600; font-size: .9rem; margin-bottom: 8px; }
+</style>

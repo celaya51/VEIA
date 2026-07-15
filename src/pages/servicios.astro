@@ -1,0 +1,90 @@
+---
+import Base from '../layouts/Base.astro';
+
+const web = [
+  { i: '⚡', t: 'Sitio Express', d: 'Creamos tu sitio web <b>en una sola videollamada o presencial</b>, contigo, paso a paso. Te queda en tu propia cuenta y aprendes a manejarlo. Listo el mismo día.' },
+  { i: '🌐', t: 'Sitio a la medida', d: 'Un sitio profesional diseñado para tu marca: varias secciones, formularios, tienda en línea y enfoque en que te encuentren en Google.' },
+];
+const marketing = [
+  { i: '📲', t: 'Redes sociales', d: 'Publicaciones, calendario y respuesta a tus clientes (community).' },
+  { i: '🎯', t: 'Publicidad (Ads)', d: 'Campañas en Facebook, Instagram y Google bien hechas, sin tirar el dinero.' },
+  { i: '📸', t: 'Fotografía', d: 'Foto profesional de tu producto, local y servicio.' },
+  { i: '🎬', t: 'Video y reels', d: 'Video corto que llama la atención y conecta con tu público.' },
+  { i: '✍️', t: 'Copywriting', d: 'Textos que enamoran y venden, para tu web y tus anuncios.' },
+  { i: '📈', t: 'SEO y Google Maps', d: 'Que te encuentren cuando te buscan en internet y en el mapa.' },
+  { i: '✉️', t: 'Email marketing', d: 'Correos y promociones para que tus clientes regresen.' },
+  { i: '🔎', t: 'Estudio de mercado', d: 'Conoce a tus clientes y a tu competencia para decidir mejor.' },
+  { i: '🎨', t: 'Branding y diseño', d: 'Logo, colores y tipografías que hacen memorable tu marca.' },
+];
+const soft = ['Inventario', 'Citas + WhatsApp', 'Punto de venta', 'Clientes (CRM)', 'Asistencia', 'Órdenes', 'Reportes'];
+const infra = ['Estudio y propuesta', 'Internet y WiFi', 'Servidores', 'Respaldos', 'Seguridad', 'Soporte'];
+---
+<Base current="servicios" title="Servicios · VEIA" description="Sitios web, redes sociales, diseño, fotografía, video y soluciones de TI a la medida para tu negocio.">
+
+  <section class="page-hero anim-grad">
+    <div class="aurora"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div>
+    <div class="container">
+      <span class="hero-eyebrow">Servicios</span>
+      <h1 class="h2" style="color:#fff">Todo para digitalizar tu negocio</h1>
+      <p class="lead" style="color:rgba(255,255,255,.95)">Elige solo lo que necesitas. Te asesoramos sin compromiso y en español claro.</p>
+    </div>
+  </section>
+
+  <section class="section bg-cream">
+    <div class="container">
+      <span class="eyebrow">Páginas web</span>
+      <h2 class="h2" style="margin-bottom:6px">Tu negocio en internet</h2>
+      <div class="grid grid-2 mt">
+        {web.map((s) => (
+          <article class="card"><div class="ico">{s.i}</div><h3>{s.t}</h3><p set:html={s.d}></p></article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-cream2">
+    <div class="container">
+      <span class="eyebrow">Marketing y redes</span>
+      <h2 class="h2" style="margin-bottom:6px">Que tu negocio se vea activo y venda</h2>
+      <div class="grid grid-3 mt">
+        {marketing.map((s) => (
+          <article class="card"><div class="ico">{s.i}</div><h3>{s.t}</h3><p>{s.d}</p></article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-cream">
+    <div class="container">
+      <span class="eyebrow">VEIA Soluciones</span>
+      <h2 class="h2" style="margin-bottom:6px">Tecnología a la medida de tu negocio</h2>
+      <p class="lead">¿Quieres un sistema pero un ERP grande te queda enorme y caro? Te hacemos justo lo que necesitas.</p>
+      <div class="grid grid-2 mt">
+        <article class="card">
+          <div class="ico">⚙️</div><h3>Software a la medida</h3>
+          <p>Herramientas y aplicaciones web simples para tu operación diaria:</p>
+          <p style="margin-top:12px">{soft.map((b) => <span class="badge">{b}</span>)}</p>
+        </article>
+        <article class="card">
+          <div class="ico">🖧</div><h3>Infraestructura y redes</h3>
+          <p>Hacemos que tu internet, tus equipos y tu información funcionen y estén seguros:</p>
+          <p style="margin-top:12px">{infra.map((b) => <span class="badge">{b}</span>)}</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-cream2">
+    <div class="container">
+      <div class="cta-band anim-grad">
+        <div class="aurora"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div>
+        <div class="cta-inner">
+          <h2 class="h2">¿No sabes por dónde empezar?</h2>
+          <p>Cuéntanos de tu negocio y te decimos qué te conviene. Sin compromiso.</p>
+          <a href="https://wa.me/525659898908?text=Hola%20VEIA,%20quiero%20asesor%C3%ADa" target="_blank" rel="noopener" class="btn btn--lg btn--wa">💬 Habla con nosotros</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Base>

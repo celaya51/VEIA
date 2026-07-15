@@ -1,0 +1,102 @@
+---
+import Base from '../layouts/Base.astro';
+
+const clientes = [
+  { href: 'https://legendtower.com.mx/', img: '/images/logo-legend.webp', alt: 'Legend Horizon Living', txt: 'Desarrollo inmobiliario', dark: false },
+  { href: 'https://uditore.mx/', img: '/images/logo-uditore-full.png', alt: 'Uditore', txt: 'Consultoría contable y fiscal', dark: false },
+  { href: 'https://tocomadera.mx/', img: '/images/logo-tocomadera.png', alt: 'Tocomadera', txt: 'Diseño de muebles en madera', dark: false },
+  { href: 'https://mdemaiz.mx/', img: '/images/logo-mdemaiz-lg.png', alt: 'M de Maíz', txt: 'Botanas y snacks de maíz', dark: true },
+];
+const demos = [
+  { i: '💇', t: 'Estética / Belleza', d: 'Salón de belleza, barbería o spa.', href: '/plantillas/belleza/' },
+  { i: '🔧', t: 'Taller / Servicios', d: 'Taller mecánico, eléctrico o servicio técnico.', href: '/plantillas/taller/' },
+  { i: '🛍️', t: 'Tienda / Comercio', d: 'Tienda en línea, catálogo o comercio local.', href: '/plantillas/tienda/' },
+  { i: '🩺', t: 'Salud / Consultorio', d: 'Médico, dentista, nutriólogo o psicólogo.', href: '/plantillas/salud/' },
+  { i: '💼', t: 'Profesional / Servicios', d: 'Abogado, contador, arquitecto o consultor.', href: '/plantillas/profesional/' },
+];
+---
+<Base current="portafolio" title="Portafolio · VEIA" description="Ejemplos de sitios y proyectos de VEIA.">
+
+  <section class="page-hero anim-grad">
+    <div class="aurora"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div>
+    <div class="container">
+      <span class="hero-eyebrow">Portafolio</span>
+      <h1 class="h2" style="color:#fff">Proyectos que hablan por nosotros</h1>
+      <p class="lead" style="color:rgba(255,255,255,.95)">Estos son algunos de los sitios web que hemos creado para nuestros clientes.</p>
+    </div>
+  </section>
+
+  <section class="section bg-cream">
+    <div class="container">
+      <span class="eyebrow">Clientes reales</span>
+      <h2 class="h2" style="margin-bottom:6px">Sitios web entregados</h2>
+      <div class="grid grid-2 mt">
+        {clientes.map((c) => (
+          <a class:list={["cliente-card", c.dark && "cliente-card--dark"]} href={c.href} target="_blank" rel="noopener">
+            <img src={c.img} alt={c.alt} loading="lazy" />
+            <span>{c.txt} <b>↗</b></span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-cream2">
+    <div class="container center">
+      <span class="eyebrow">Ejemplos express</span>
+      <h2 class="h2">Plantillas listas para personalizar</h2>
+      <p class="lead">Ideales para tu Sitio Express. Las adaptamos a tu negocio en una sola sesión.</p>
+    </div>
+    <div class="container">
+      <div class="grid grid-3 mt-lg">
+        {demos.map((d) => (
+          <a class="card demo-card" href={d.href}>
+            <div class="ico">{d.i}</div>
+            <h3>{d.t}</h3>
+            <p>{d.d}</p>
+            <span class="demo-link">Ver demo →</span>
+          </a>
+        ))}
+        <article class="card">
+          <div class="ico">⚙️</div><h3>Soluciones a la medida</h3>
+          <div class="proximamente">Próximamente</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-cream">
+    <div class="container">
+      <div class="cta-band anim-grad">
+        <div class="aurora"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div>
+        <div class="cta-inner">
+          <h2 class="h2">¿Quieres ser uno de nuestros primeros casos?</h2>
+          <p>Precio especial de lanzamiento para los primeros negocios. Pregúntanos.</p>
+          <a href="https://wa.me/525659898908?text=Quiero%20ser%20de%20los%20primeros%20clientes" target="_blank" rel="noopener" class="btn btn--lg btn--wa">💬 Quiero saber más</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Base>
+
+<style>
+  .cliente-card {
+    background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg);
+    padding: 40px 28px; display: flex; flex-direction: column; align-items: center; gap: 14px;
+    text-align: center; min-height: 190px; justify-content: center;
+    transition: transform var(--t), box-shadow var(--t);
+  }
+  .cliente-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+  .cliente-card img { max-height: 70px; max-width: 200px; width: auto; object-fit: contain; }
+  .cliente-card span { color: var(--muted); font-size: .9rem; font-weight: 500; }
+  .cliente-card--dark { background: var(--ink); border-color: var(--ink); }
+  .cliente-card--dark span { color: rgba(255,255,255,.82); }
+
+  .demo-card { display: block; }
+  .demo-link { display: inline-block; margin-top: 12px; color: var(--orange-d); font-weight: 700; font-size: .92rem; }
+  .proximamente {
+    border: 2px dashed var(--line); border-radius: 12px; padding: 24px; text-align: center;
+    color: var(--muted); font-size: .9rem; margin-top: 8px;
+  }
+</style>

@@ -1,0 +1,262 @@
+---
+import Base from '../layouts/Base.astro';
+
+const WA = 'https://wa.me/525659898908?text=Hola%20VEIA,%20quiero%20una%20cotizaci%C3%B3n';
+const WA_INFO = 'https://wa.me/525659898908?text=Hola%20VEIA,%20quiero%20informaci%C3%B3n';
+const AGENDA = 'https://calendar.app.google/VWkFMP8V77mzLEN7A';
+
+const servicios = [
+  { i: '⚡', t: 'Sitio Express', d: 'Tu sitio web en una sola videollamada, hecho contigo y listo el mismo día.' },
+  { i: '📲', t: 'Redes y marketing', d: 'Mantenemos tus redes activas, creamos contenido y atraemos clientes.' },
+  { i: '🎨', t: 'Diseño y branding', d: 'Tu logo e identidad para que tu negocio se vea serio y memorable.' },
+  { i: '📸', t: 'Foto y video', d: 'Fotografía profesional y video corto que hacen que tu marca destaque.' },
+  { i: '⚙️', t: 'Soluciones a la medida', d: 'Herramientas para tu negocio (inventario, citas, ventas) sin pagar un ERP gigante.' },
+  { i: '🖧', t: 'Infraestructura y redes', d: 'Diagnóstico, internet, equipos y respaldos que sí funcionan.' },
+];
+
+const pasos = [
+  { n: '1', t: 'Platicamos', d: 'Entendemos tu negocio y qué necesitas. En español claro, sin tecnicismos.' },
+  { n: '2', t: 'Lo hacemos contigo', d: 'Avanzamos paso a paso. Aprendes en el camino y quedas al mando.' },
+  { n: '3', t: 'Quedas listo', d: 'Tu negocio en internet, con apoyo nuestro cuando lo necesites.' },
+];
+
+const planes = [
+  { nombre: 'Básico', precio: '2,500', destacado: false, items: ['Sitio web de 1 página', 'Diseño responsive', 'Formulario de contacto', 'Hosting 1 año'] },
+  { nombre: 'Profesional', precio: '5,500', destacado: true, items: ['Sitio web hasta 5 páginas', 'Diseño personalizado', 'SEO básico incluido', 'Integración redes sociales', 'Hosting 1 año + SSL'] },
+  { nombre: 'Premium', precio: '12,000', destacado: false, items: ['Sitio web completo', 'Tienda en línea', 'SEO avanzado', 'Branding + logo', 'Redes sociales 3 meses', 'Hosting 1 año + dominio'] },
+];
+
+const clientes = [
+  { img: '/images/logo-legend.webp', alt: 'Legend', txt: 'Desarrollo inmobiliario' },
+  { img: '/images/logo-uditore-full.png', alt: 'Uditore', txt: 'Consultoría contable y fiscal' },
+  { img: '/images/logo-tocomadera.png', alt: 'Tocomadera', txt: 'Diseño de muebles en madera' },
+  { img: '/images/logo-mdemaiz-lg.png', alt: 'M de Maíz', txt: 'Botanas y snacks de maíz', dark: true },
+];
+
+const demos = [
+  { i: '💇', t: 'Estética / Belleza', d: 'Salón, barbería o spa', href: '/plantillas/belleza/' },
+  { i: '🩺', t: 'Salud / Consultorio', d: 'Médico, dentista, nutriólogo', href: '/plantillas/salud/' },
+  { i: '🔧', t: 'Taller / Servicios', d: 'Mecánico, eléctrico, técnico', href: '/plantillas/taller/' },
+  { i: '🛍️', t: 'Comercio', d: 'Catálogo o tienda en línea', href: '/plantillas/tienda/' },
+  { i: '💼', t: 'Profesional', d: 'Abogado, contador, consultor', href: '/plantillas/profesional/' },
+];
+---
+<Base current="inicio">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero anim-grad" id="inicio">
+    <div class="aurora"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div>
+    <div class="container hero-inner">
+      <div class="hero-copy">
+        <span class="hero-eyebrow">Marketing y tecnología para tu negocio</span>
+        <h1 class="h1 hero-title">Que tu marca<br><em>resuene.</em></h1>
+        <p class="hero-sub">Llevamos tu negocio a internet sin complicaciones: tu sitio web, tus redes activas y herramientas que te hacen la vida más fácil. Lo hacemos <strong>contigo</strong>, paso a paso.</p>
+        <div class="hero-cta">
+          <a href={WA_INFO} target="_blank" rel="noopener" class="btn btn--lg btn--light">💬 Escríbenos por WhatsApp</a>
+          <a href="#servicios" class="btn btn--lg btn--outline-light">Ver servicios</a>
+        </div>
+        <div class="hero-trust">
+          <span class="chip">📍 Hecho en Guadalajara</span>
+          <span class="chip">🤝 Lo hacemos contigo</span>
+          <span class="chip">🌱 Ideal si vas empezando</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-wave" aria-hidden="true"></div>
+  </section>
+
+  <!-- ============ ¿TE SUENA? ============ -->
+  <section class="section bg-cream">
+    <div class="container center">
+      <span class="eyebrow">¿Te suena?</span>
+      <h2 class="h2">Si tu negocio no está en internet,<br>están encontrando… a tu competencia.</h2>
+      <div class="grid grid-3 mt-lg">
+        <article class="card"><div class="ico">🔍</div><h3>No apareces en Google</h3><p>La gente te busca en el celular y no te encuentra (ni en el mapa).</p></article>
+        <article class="card"><div class="ico">🌐</div><h3>No tienes página web</h3><p>O la que tienes está vieja y no se ve bien en el teléfono.</p></article>
+        <article class="card"><div class="ico">😴</div><h3>Tus redes están dormidas</h3><p>Sin publicaciones ni quién responda los mensajes de tus clientes.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICIOS ============ -->
+  <section class="section bg-cream2" id="servicios">
+    <div class="container center">
+      <span class="eyebrow">Lo que hacemos</span>
+      <h2 class="h2">Todo para digitalizar tu negocio</h2>
+      <p class="lead">Desde tu primera página hasta herramientas a la medida. Tú eliges hasta dónde.</p>
+    </div>
+    <div class="container">
+      <div class="grid grid-3 mt-lg">
+        {servicios.map((s) => (
+          <article class="card"><div class="ico">{s.i}</div><h3>{s.t}</h3><p>{s.d}</p></article>
+        ))}
+      </div>
+      <div class="center" style="margin-top:40px"><a href="/servicios.html" class="btn btn--lg">Ver todos los servicios →</a></div>
+    </div>
+  </section>
+
+  <!-- ============ CÓMO TRABAJAMOS ============ -->
+  <section class="section bg-cream">
+    <div class="container center">
+      <span class="eyebrow">Sin complicaciones</span>
+      <h2 class="h2">Cómo trabajamos</h2>
+      <div class="grid grid-3 mt-lg pasos">
+        {pasos.map((p) => (
+          <article class="card center"><div class="paso-num">{p.n}</div><h3>{p.t}</h3><p>{p.d}</p></article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PRECIOS ============ -->
+  <section class="section bg-cream2" id="precios">
+    <div class="container center">
+      <span class="eyebrow">Inversión clara</span>
+      <h2 class="h2">Precios transparentes</h2>
+      <p class="lead">Elige lo que tu negocio necesita. Si no ves lo que buscas, <strong>platicamos sin compromiso.</strong></p>
+    </div>
+    <div class="container">
+      <div class="grid grid-3 mt-lg planes">
+        {planes.map((plan) => (
+          <article class:list={["plan", plan.destacado && "plan--destacado"]}>
+            {plan.destacado && <span class="plan-badge">Más popular</span>}
+            <h3 class="plan-nombre">{plan.nombre}</h3>
+            <div class="plan-precio">${plan.precio} <small>MXN</small></div>
+            <p class="plan-nota">Pago único</p>
+            <ul class="plan-lista">
+              {plan.items.map((it) => <li>{it}</li>)}
+            </ul>
+            <a href={WA} target="_blank" rel="noopener" class:list={["btn", "btn-block", !plan.destacado && "btn--ghost"]}>Lo quiero</a>
+          </article>
+        ))}
+      </div>
+      <div class="center" style="margin-top:40px"><a href="/servicios-paquetes.html" class="btn btn--lg btn--ghost">Ver precios completos y planes mensuales →</a></div>
+    </div>
+  </section>
+
+  <!-- ============ PORTAFOLIO ============ -->
+  <section class="section bg-cream" id="portafolio">
+    <div class="container center">
+      <span class="eyebrow">Lo que hemos hecho</span>
+      <h2 class="h2">Negocios que ya resuenan</h2>
+    </div>
+    <div class="container">
+      <div class="grid grid-2 mt-lg clientes">
+        {clientes.map((c) => (
+          <article class:list={["cliente-card", c.dark && "cliente-card--dark"]}>
+            <img src={c.img} alt={c.alt} loading="lazy" />
+            <span>{c.txt}</span>
+          </article>
+        ))}
+      </div>
+
+      <div class="center" style="margin:56px 0 8px"><span class="eyebrow">Ejemplos express</span></div>
+      <div class="grid grid-3 demos">
+        {demos.map((d) => (
+          <article class="card center">
+            <div class="ico" style="margin-inline:auto">{d.i}</div>
+            <h3>{d.t}</h3>
+            <p style="margin-bottom:16px">{d.d}</p>
+            <a href={d.href} class="btn btn-block">Ver demo</a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA FINAL ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="cta-band anim-grad">
+        <div class="aurora"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div>
+        <div class="cta-inner">
+          <h2 class="h2" style="color:#fff">¿Listo para que más clientes te encuentren?</h2>
+          <p>Te decimos qué le conviene a tu negocio, sin compromiso.</p>
+          <div class="hero-cta" style="justify-content:center">
+            <a href={WA} target="_blank" rel="noopener" class="btn btn--lg btn--wa">💬 Cotiza por WhatsApp</a>
+            <a href={AGENDA} target="_blank" rel="noopener" class="btn btn--lg btn--light">📅 Agenda una llamada</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Base>
+
+<style>
+  /* Hero */
+  .hero { position: relative; color: #fff; padding: 96px 0 120px; overflow: hidden; }
+  .hero-inner { position: relative; z-index: 2; }
+  .hero-copy { max-width: 680px; }
+  .hero-eyebrow {
+    display: inline-block; font-family: 'Poppins', sans-serif; font-weight: 600;
+    font-size: .82rem; letter-spacing: 2px; text-transform: uppercase;
+    color: #fff; background: rgba(255,255,255,.18); border: 1px solid rgba(255,255,255,.35);
+    padding: 7px 16px; border-radius: 100px; margin-bottom: 22px;
+  }
+  .hero-title { color: #fff; margin-bottom: 20px; text-shadow: 0 2px 18px rgba(0,0,0,.10); }
+  .hero-title em { font-style: normal; color: #1B2A24; }
+  .hero-sub { font-size: 1.18rem; color: rgba(255,255,255,.95); max-width: 56ch; margin-bottom: 30px; }
+  .hero-sub strong { color: #1B2A24; }
+  .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 28px; }
+  .hero-trust { display: flex; gap: 12px; flex-wrap: wrap; }
+  .hero-trust .chip { background: rgba(255,255,255,.22); border-color: rgba(255,255,255,.35); color: #fff; }
+  .hero-wave {
+    position: absolute; left: 0; right: 0; bottom: -1px; height: 60px; z-index: 2;
+    background: var(--cream);
+    -webkit-mask: radial-gradient(80px 60px at 50% 0, transparent 98%, #000) repeat-x;
+    mask: radial-gradient(80px 60px at 50% 0, transparent 98%, #000);
+    -webkit-mask-size: 160px 60px; mask-size: 160px 60px;
+  }
+
+  /* Pasos */
+  .paso-num {
+    width: 54px; height: 54px; border-radius: 50%; margin: 0 auto 16px;
+    display: grid; place-items: center; font-family: 'Poppins', sans-serif; font-weight: 700;
+    font-size: 1.3rem; color: #fff; background: var(--grad-warm);
+  }
+
+  /* Planes */
+  .plan {
+    background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg);
+    padding: 34px 30px; display: flex; flex-direction: column; position: relative;
+    box-shadow: var(--shadow); transition: transform var(--t), box-shadow var(--t);
+  }
+  .plan:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+  .plan--destacado { border: 2px solid var(--orange); box-shadow: 0 18px 45px rgba(252,119,62,.24); transform: scale(1.03); }
+  .plan--destacado:hover { transform: scale(1.03) translateY(-6px); }
+  .plan-badge {
+    position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
+    background: var(--grad-warm); color: #fff; font-family: 'Poppins', sans-serif; font-weight: 600;
+    font-size: .76rem; letter-spacing: .5px; padding: 6px 16px; border-radius: 100px;
+  }
+  .plan-nombre { font-size: 1.3rem; }
+  .plan-precio { font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 2.3rem; margin: 6px 0 2px; }
+  .plan-precio small { font-size: .9rem; font-weight: 600; color: var(--muted); }
+  .plan-nota { color: var(--muted); font-size: .92rem; margin-bottom: 20px; }
+  .plan-lista { list-style: none; display: grid; gap: 11px; margin-bottom: 26px; flex: 1; }
+  .plan-lista li { position: relative; padding-left: 28px; font-size: .96rem; }
+  .plan-lista li::before { content: "✓"; position: absolute; left: 0; color: var(--orange); font-weight: 800; }
+
+  /* Clientes */
+  .cliente-card {
+    background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg);
+    padding: 30px; display: flex; flex-direction: column; align-items: center; gap: 12px;
+    text-align: center; transition: transform var(--t), box-shadow var(--t);
+  }
+  .cliente-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+  .cliente-card img { max-height: 60px; max-width: 190px; width: auto; object-fit: contain; }
+  .cliente-card span { color: var(--muted); font-size: .95rem; font-weight: 500; }
+  .cliente-card--dark { background: var(--ink); border-color: var(--ink); }
+  .cliente-card--dark span { color: rgba(255,255,255,.8); }
+
+  /* CTA band */
+  .cta-band { position: relative; border-radius: var(--radius-lg); padding: 64px 40px; overflow: hidden; text-align: center; }
+  .cta-inner { position: relative; z-index: 2; }
+  .cta-band p { color: rgba(255,255,255,.92); font-size: 1.1rem; margin: 12px auto 26px; max-width: 46ch; }
+
+  @media (max-width: 640px) {
+    .hero { padding: 72px 0 90px; }
+    .plan--destacado, .plan--destacado:hover { transform: none; }
+  }
+</style>
