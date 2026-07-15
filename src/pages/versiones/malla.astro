@@ -1,0 +1,166 @@
+---
+import Base from '../../layouts/Base.astro';
+
+const WA = 'https://wa.me/525659898908?text=Hola%20VEIA,%20quiero%20una%20cotizaci%C3%B3n';
+const WA_INFO = 'https://wa.me/525659898908?text=Hola%20VEIA,%20quiero%20informaci%C3%B3n';
+const AGENDA = 'https://calendar.app.google/VWkFMP8V77mzLEN7A';
+
+const servicios = [
+  { i: '⚡', t: 'Sitio Express', d: 'Tu sitio web en una sola videollamada, hecho contigo y listo el mismo día.' },
+  { i: '📲', t: 'Redes y marketing', d: 'Mantenemos tus redes activas, creamos contenido y atraemos clientes.' },
+  { i: '🎨', t: 'Diseño y branding', d: 'Tu logo e identidad para que tu negocio se vea serio y memorable.' },
+  { i: '📸', t: 'Foto y video', d: 'Fotografía profesional y video corto que hacen que tu marca destaque.' },
+  { i: '⚙️', t: 'Soluciones a la medida', d: 'Herramientas para tu negocio (inventario, citas, ventas) sin pagar un ERP gigante.' },
+  { i: '🖧', t: 'Infraestructura y redes', d: 'Diagnóstico, internet, equipos y respaldos que sí funcionan.' },
+];
+const pasos = [
+  { n: '1', t: 'Platicamos', d: 'Entendemos tu negocio y qué necesitas. En español claro, sin tecnicismos.' },
+  { n: '2', t: 'Lo hacemos contigo', d: 'Avanzamos paso a paso. Aprendes en el camino y quedas al mando.' },
+  { n: '3', t: 'Quedas listo', d: 'Tu negocio en internet, con apoyo nuestro cuando lo necesites.' },
+];
+---
+<Base current="inicio" bodyClass="mesh-page" title="VEIA · Malla viva (vista previa)">
+
+  <!-- Fondo de malla multicolor animado (fijo, detrás de todo) -->
+  <div class="mesh" aria-hidden="true">
+    <span class="m m1"></span><span class="m m2"></span><span class="m m3"></span>
+    <span class="m m4"></span><span class="m m5"></span><span class="m m6"></span>
+  </div>
+
+  <div class="preview-flag">👀 Vista previa · fondo malla viva — <a href="/">volver al sitio</a></div>
+
+  <!-- HERO -->
+  <section class="hero-m">
+    <div class="container">
+      <span class="hero-eyebrow">Marketing y tecnología para tu negocio</span>
+      <h1 class="h1 hero-m-title">Que tu marca<br><em>resuene.</em></h1>
+      <p class="hero-m-sub">Llevamos tu negocio a internet sin complicaciones: tu sitio web, tus redes activas y herramientas que te hacen la vida más fácil. Lo hacemos <strong>contigo</strong>, paso a paso.</p>
+      <div class="hero-cta">
+        <a href={WA_INFO} target="_blank" rel="noopener" class="btn btn--lg">💬 Escríbenos por WhatsApp</a>
+        <a href="#servicios" class="btn btn--lg btn--ghost">Ver servicios</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ¿TE SUENA? -->
+  <section class="section">
+    <div class="container center">
+      <span class="eyebrow">¿Te suena?</span>
+      <h2 class="h2">Si tu negocio no está en internet,<br>están encontrando… a tu competencia.</h2>
+      <div class="grid grid-3 mt-lg">
+        <article class="glass"><div class="ico">🔍</div><h3>No apareces en Google</h3><p>La gente te busca en el celular y no te encuentra (ni en el mapa).</p></article>
+        <article class="glass"><div class="ico">🌐</div><h3>No tienes página web</h3><p>O la que tienes está vieja y no se ve bien en el teléfono.</p></article>
+        <article class="glass"><div class="ico">😴</div><h3>Tus redes están dormidas</h3><p>Sin publicaciones ni quién responda los mensajes de tus clientes.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section class="section" id="servicios">
+    <div class="container center">
+      <span class="eyebrow">Lo que hacemos</span>
+      <h2 class="h2">Todo para digitalizar tu negocio</h2>
+      <p class="lead">Desde tu primera página hasta herramientas a la medida. Tú eliges hasta dónde.</p>
+    </div>
+    <div class="container">
+      <div class="grid grid-3 mt-lg">
+        {servicios.map((s) => (
+          <article class="glass"><div class="ico">{s.i}</div><h3>{s.t}</h3><p>{s.d}</p></article>
+        ))}
+      </div>
+      <div class="center" style="margin-top:40px"><a href="/servicios.html" class="btn btn--lg">Ver todos los servicios →</a></div>
+    </div>
+  </section>
+
+  <!-- CÓMO -->
+  <section class="section">
+    <div class="container center">
+      <span class="eyebrow">Sin complicaciones</span>
+      <h2 class="h2">Cómo trabajamos</h2>
+      <div class="grid grid-3 mt-lg">
+        {pasos.map((p) => (
+          <article class="glass center"><div class="paso-num">{p.n}</div><h3>{p.t}</h3><p>{p.d}</p></article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section">
+    <div class="container">
+      <div class="glass cta-glass center">
+        <h2 class="h2">¿Listo para que más clientes te encuentren?</h2>
+        <p class="lead" style="margin:12px auto 24px">Te decimos qué le conviene a tu negocio, sin compromiso.</p>
+        <div class="hero-cta" style="justify-content:center">
+          <a href={WA} target="_blank" rel="noopener" class="btn btn--lg btn--wa">💬 Cotiza por WhatsApp</a>
+          <a href={AGENDA} target="_blank" rel="noopener" class="btn btn--lg">📅 Agenda una llamada</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Base>
+
+<style is:global>
+  /* En esta página el fondo lo pone la malla; el color base combina con ella */
+  body.mesh-page { background: #FFF3E9; }
+</style>
+
+<style>
+  /* ===== Malla multicolor viva ===== */
+  .mesh { position: fixed; inset: 0; z-index: -1; overflow: hidden; background: #FFF3E9; }
+  .mesh .m { position: absolute; border-radius: 50%; filter: blur(70px); opacity: .85; mix-blend-mode: multiply; }
+  .m1 { width: 46vw; height: 46vw; background: #fc773e; top: -8%;  left: -6%;  animation: drift1 19s ease-in-out infinite alternate; }
+  .m2 { width: 42vw; height: 42vw; background: #f7b046; top: -4%;  right: -8%; animation: drift2 23s ease-in-out infinite alternate; }
+  .m3 { width: 40vw; height: 40vw; background: #a5bb1a; bottom: -10%; left: 10%; animation: drift3 21s ease-in-out infinite alternate; }
+  .m4 { width: 38vw; height: 38vw; background: #faa785; bottom: -6%; right: 4%; animation: drift4 27s ease-in-out infinite alternate; }
+  .m5 { width: 34vw; height: 34vw; background: #ff5e7e; top: 34%; left: 34%; opacity: .6; animation: drift5 25s ease-in-out infinite alternate; }
+  .m6 { width: 30vw; height: 30vw; background: #ffd166; top: 50%; right: 22%; animation: drift1 30s ease-in-out infinite alternate; }
+
+  @keyframes drift1 { from { transform: translate(0,0) scale(1); } to { transform: translate(14vw,10vh) scale(1.15); } }
+  @keyframes drift2 { from { transform: translate(0,0) scale(1); } to { transform: translate(-12vw,12vh) scale(1.1); } }
+  @keyframes drift3 { from { transform: translate(0,0) scale(1); } to { transform: translate(10vw,-12vh) scale(1.18); } }
+  @keyframes drift4 { from { transform: translate(0,0) scale(1.05); } to { transform: translate(-14vw,-8vh) scale(1); } }
+  @keyframes drift5 { from { transform: translate(0,0) scale(1); } to { transform: translate(-10vw,8vh) scale(1.2); } }
+
+  /* Bandera de vista previa */
+  .preview-flag {
+    position: relative; z-index: 2; text-align: center; font-size: .82rem;
+    background: rgba(27,42,36,.7); color: #fff; padding: 6px 12px; backdrop-filter: blur(6px);
+  }
+  .preview-flag a { color: #ffd166; font-weight: 600; }
+
+  /* Hero sobre la malla */
+  .hero-m { position: relative; z-index: 1; padding: 90px 0 70px; color: #1B2A24; }
+  .hero-m-title { margin-bottom: 20px; }
+  .hero-m-title em { font-style: normal; color: #fff; text-shadow: 0 2px 20px rgba(0,0,0,.25); }
+  .hero-m-sub { font-size: 1.18rem; max-width: 56ch; margin-bottom: 30px; color: #3a2c22; }
+
+  /* Tarjetas glass (para que el texto se lea sobre el color) */
+  .glass {
+    position: relative; z-index: 1;
+    background: rgba(255,255,255,.55);
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    border: 1px solid rgba(255,255,255,.6);
+    border-radius: var(--radius-lg); padding: 30px;
+    box-shadow: 0 14px 40px rgba(120,50,10,.14);
+    transition: transform var(--t), box-shadow var(--t);
+  }
+  .glass:hover { transform: translateY(-6px); box-shadow: 0 22px 55px rgba(120,50,10,.2); }
+  .glass .ico {
+    width: 56px; height: 56px; border-radius: 16px; display: grid; place-items: center;
+    font-size: 1.6rem; margin-bottom: 16px; background: rgba(255,255,255,.6);
+  }
+  .glass h3 { font-size: 1.18rem; margin-bottom: 8px; }
+  .glass p { color: #4a3a2c; font-size: .98rem; }
+  .section { position: relative; z-index: 1; }
+  .section .eyebrow { color: #b5401a; }
+  .paso-num {
+    width: 54px; height: 54px; border-radius: 50%; margin: 0 auto 16px; display: grid; place-items: center;
+    font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 1.3rem; color: #fff; background: var(--grad-warm);
+  }
+  .cta-glass { padding: 56px 40px; background: rgba(255,255,255,.42); }
+
+  @media (prefers-reduced-motion: reduce) { .mesh .m { animation: none !important; } }
+</style>
