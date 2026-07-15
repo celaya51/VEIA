@@ -1,1 +1,11 @@
 .claude/
+
+# Astro / Node
+node_modules/
+dist/
+.astro/
+*.log
+npm-debug.log*
+.DS_Store
+.env
+.env.production

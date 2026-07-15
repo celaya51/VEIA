@@ -1,0 +1,101 @@
+---
+import Base from '../layouts/Base.astro';
+const AGENDA = 'https://calendar.app.google/VWkFMP8V77mzLEN7A';
+---
+<Base current="contacto" title="Contacto · VEIA" description="Contáctanos por WhatsApp o correo. Cotización sin compromiso.">
+
+  <section class="page-hero anim-grad">
+    <div class="aurora"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div>
+    <div class="container">
+      <span class="hero-eyebrow">Contacto</span>
+      <h1 class="h2" style="color:#fff">Hablemos de tu negocio</h1>
+      <p class="lead" style="color:rgba(255,255,255,.95)">Elige lo que te resulte más cómodo. Te respondemos pronto, sin compromiso.</p>
+      <div class="hero-cta" style="justify-content:center;margin-top:22px">
+        <a href={AGENDA} target="_blank" rel="noopener" class="btn btn--lg btn--light">📅 Agenda una llamada</a>
+        <a href="https://wa.me/525659898908?text=Hola%20VEIA" target="_blank" rel="noopener" class="btn btn--lg btn--wa">💬 WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-cream">
+    <div class="container">
+      <div class="grid contacto-grid">
+        <div>
+          <h3 style="margin-bottom:18px">Cuéntanos qué necesitas</h3>
+          <form id="leadForm" class="form">
+            <input id="f-nombre" name="nombre" placeholder="Tu nombre" required />
+            <input id="f-negocio" name="negocio" placeholder="Nombre de tu negocio" />
+            <input id="f-telefono" name="telefono" placeholder="Teléfono / WhatsApp" />
+            <input id="f-correo" name="correo" type="email" placeholder="Tu correo (opcional)" />
+            <input id="f-sitio" name="sitio" tabindex="-1" autocomplete="off" class="hp" aria-hidden="true" />
+            <textarea id="f-mensaje" name="mensaje" placeholder="¿Qué te gustaría? (sitio web, redes, una herramienta…)" rows="4" required></textarea>
+            <div class="form-actions">
+              <button type="submit" class="btn" id="btnEnviar">Enviar mensaje</button>
+              <button type="button" class="btn btn--wa" id="btnWhats">o por WhatsApp</button>
+            </div>
+            <p class="form-nota" id="formNota">Tu mensaje llega directo a nuestro correo. Te respondemos pronto, sin compromiso.</p>
+          </form>
+        </div>
+        <aside>
+          <div class="card datos">
+            <h3 style="margin-bottom:16px">Datos de contacto</h3>
+            <p>📅 <b>Citas:</b> <a href={AGENDA} target="_blank" rel="noopener">Agenda una llamada de 30 min</a></p>
+            <p>📱 <b>WhatsApp:</b> <a href="https://wa.me/525659898908">56 5989 8908</a></p>
+            <p>✉️ <b>Correo:</b> <a href="mailto:contacto@veia.com.mx">contacto@veia.com.mx</a></p>
+            <p>📍 <b>Zona:</b> Guadalajara · Zapopan, Jal.</p>
+            <p>🕒 <b>Atención:</b> Lunes a viernes</p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+</Base>
+
+<style>
+  .contacto-grid { grid-template-columns: 1.2fr 1fr; align-items: start; gap: 32px; }
+  .form { display: grid; gap: 12px; }
+  .form input, .form textarea {
+    width: 100%; padding: 13px 16px; border: 1px solid var(--line); border-radius: 12px;
+    background: #fff; color: var(--ink); font-family: 'Raleway', sans-serif; font-size: .96rem;
+  }
+  .form input:focus, .form textarea:focus { outline: none; border-color: var(--orange); box-shadow: 0 0 0 3px rgba(252,119,62,.12); }
+  .form .hp { position: absolute; left: -9999px; }
+  .form-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+  .form-nota { font-size: .86rem; color: var(--muted); margin-top: 6px; }
+  .datos p { margin-bottom: 10px; }
+  .datos a { color: var(--orange-d); font-weight: 600; }
+  @media (max-width: 780px) { .contacto-grid { grid-template-columns: 1fr; } }
+</style>
+
+<script>
+  const form = document.getElementById('leadForm');
+  const nota = document.getElementById('formNota');
+  const btn = document.getElementById('btnEnviar');
+  const val = (id) => (document.getElementById(id)?.value || '').trim();
+
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      btn.disabled = true;
+      btn.textContent = 'Enviando…';
+      fetch('/enviar.php', { method: 'POST', body: new FormData(form) })
+        .then((r) => r.json())
+        .then((d) => {
+          if (d.ok) { form.reset(); nota.textContent = '✅ ¡Mensaje enviado! Te respondemos pronto.'; }
+          else { nota.textContent = '⚠️ ' + (d.error || 'No se pudo enviar. Intenta por WhatsApp.'); }
+        })
+        .catch(() => { nota.textContent = '⚠️ No se pudo enviar. Intenta por WhatsApp.'; })
+        .finally(() => { btn.disabled = false; btn.textContent = 'Enviar mensaje'; });
+    });
+  }
+
+  document.getElementById('btnWhats')?.addEventListener('click', () => {
+    let txt = 'Hola VEIA, soy ' + (val('f-nombre') || '(sin nombre)');
+    const neg = val('f-negocio'), tel = val('f-telefono'), msg = val('f-mensaje');
+    if (neg) txt += ' de ' + neg;
+    if (tel) txt += '. Mi tel: ' + tel;
+    if (msg) txt += '. Me interesa: ' + msg;
+    window.open('https://wa.me/525659898908?text=' + encodeURIComponent(txt), '_blank');
+  });
+</script>

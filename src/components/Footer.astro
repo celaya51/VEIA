@@ -1,0 +1,68 @@
+---
+const year = 2026;
+---
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <img src="/images/veia-logo-blanco.png" alt="VEIA" class="footer-logo" />
+      <p>Que tu marca resuene. Llevamos tu negocio a internet, sin complicaciones.</p>
+      <div class="footer-social">
+        <a href="https://wa.me/525659898908" target="_blank" rel="noopener" aria-label="WhatsApp">WhatsApp</a>
+        <a href="#" aria-label="Instagram">Instagram</a>
+        <a href="#" aria-label="Facebook">Facebook</a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>Explorar</h4>
+      <ul>
+        <li><a href="/servicios.html">Servicios</a></li>
+        <li><a href="/servicios-paquetes.html">Precios</a></li>
+        <li><a href="/nosotros.html">Nosotros</a></li>
+        <li><a href="/portafolio.html">Portafolio</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <ul>
+        <li><a href="https://wa.me/525659898908">56 5989 8908</a></li>
+        <li><a href="mailto:contacto@veia.com.mx">contacto@veia.com.mx</a></li>
+        <li>Guadalajara · Zapopan, Jal.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container footer-bottom">
+    <span>© {year} VEIA · Hecho con 🌱 en Guadalajara</span>
+    <a href="/contacto.html" class="footer-cta">Agenda una llamada →</a>
+  </div>
+</footer>
+
+<style>
+  .site-footer { background: linear-gradient(135deg, #e85f27, #f7b046); color: rgba(255,255,255,.9); padding: 64px 0 28px; }
+  .footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 40px; }
+  .footer-logo { height: 40px; width: auto; margin-bottom: 16px; }
+  .footer-brand p { max-width: 34ch; color: rgba(255,255,255,.85); }
+  .footer-social { display: flex; gap: 18px; margin-top: 18px; }
+  .footer-social a { font-weight: 600; font-size: .9rem; transition: opacity var(--t); }
+  .footer-social a:hover { opacity: .7; }
+
+  .footer-col h4 { color: #fff; font-size: 1rem; margin-bottom: 16px; }
+  .footer-col ul { list-style: none; display: grid; gap: 10px; }
+  .footer-col a { color: rgba(255,255,255,.88); transition: color var(--t); }
+  .footer-col a:hover { color: #fff; }
+
+  .footer-bottom {
+    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px;
+    margin-top: 44px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,.2);
+    font-size: .9rem;
+  }
+  .footer-cta { font-weight: 600; color: #fff; }
+  .footer-cta:hover { opacity: .8; }
+
+  @media (max-width: 780px) {
+    .footer-grid { grid-template-columns: 1fr; gap: 30px; }
+    .footer-bottom { justify-content: center; text-align: center; }
+  }
+</style>
