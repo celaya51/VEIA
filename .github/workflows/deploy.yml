@@ -1,0 +1,46 @@
+name: Build & Deploy a Hostinger
+
+# Compila el sitio Astro y sube el resultado (dist/) a Hostinger por SSH
+# en cada push a main. También se puede lanzar a mano desde la pestaña Actions.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-prod
+  cancel-in-progress: true
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar el repo
+        uses: actions/checkout@v4
+
+      - name: Preparar Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Compilar sitio (Astro -> dist/)
+        run: npm run build
+
+      - name: Subir dist/ a Hostinger por rsync/SSH
+        uses: easingthemes/ssh-deploy@v5
+        with:
+          SSH_PRIVATE_KEY: ${{ secrets.HOSTINGER_SSH_KEY }}
+          REMOTE_HOST:     ${{ secrets.HOSTINGER_HOST }}
+          REMOTE_PORT:     ${{ secrets.HOSTINGER_PORT }}
+          REMOTE_USER:     ${{ secrets.HOSTINGER_USER }}
+          SOURCE:          "dist/"
+          TARGET:          ${{ secrets.HOSTINGER_TARGET }}
+          # -r recursivo, -l enlaces, -t tiempos, -z comprime, -O evita tocar fechas de carpetas.
+          # (Sin --delete por seguridad: no borra archivos ajenos en public_html.
+          #  Si quieres limpieza total de archivos viejos, añade --delete al final.)
+          ARGS: "-rltzvO"
