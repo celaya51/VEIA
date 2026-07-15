@@ -1,12 +1,16 @@
-name: Build & Deploy a Hostinger
+name: Build & Deploy
 
-# Compila el sitio Astro y sube el resultado (dist/) a Hostinger por SSH
-# en cada push a main. También se puede lanzar a mano desde la pestaña Actions.
+# Compila el sitio Astro desde la rama de trabajo (astro-rebuild) y publica
+# el resultado (dist/) en la rama main, que Hostinger sirve en veia.com.mx.
+# No requiere secretos: usa el token integrado de GitHub Actions.
 
 on:
   push:
-    branches: [main]
+    branches: [astro-rebuild]
   workflow_dispatch:
+
+permissions:
+  contents: write
 
 concurrency:
   group: deploy-prod
@@ -31,16 +35,10 @@ jobs:
       - name: Compilar sitio (Astro -> dist/)
         run: npm run build
 
-      - name: Subir dist/ a Hostinger por rsync/SSH
-        uses: easingthemes/ssh-deploy@v5
+      - name: Publicar dist/ en la rama main
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          SSH_PRIVATE_KEY: ${{ secrets.HOSTINGER_SSH_KEY }}
-          REMOTE_HOST:     ${{ secrets.HOSTINGER_HOST }}
-          REMOTE_PORT:     ${{ secrets.HOSTINGER_PORT }}
-          REMOTE_USER:     ${{ secrets.HOSTINGER_USER }}
-          SOURCE:          "dist/"
-          TARGET:          ${{ secrets.HOSTINGER_TARGET }}
-          # -r recursivo, -l enlaces, -t tiempos, -z comprime, -O evita tocar fechas de carpetas.
-          # (Sin --delete por seguridad: no borra archivos ajenos en public_html.
-          #  Si quieres limpieza total de archivos viejos, añade --delete al final.)
-          ARGS: "-rltzvO"
+          branch: main
+          folder: dist
+          clean: true
+          commit-message: "deploy: publica build de astro-rebuild [skip ci]"

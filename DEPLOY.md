@@ -1,60 +1,39 @@
 # Despliegue de veia.com.mx (Astro → Hostinger)
 
-El sitio se compila con Astro y se publica en Hostinger automáticamente mediante
-GitHub Actions (`.github/workflows/deploy.yml`). Cada `git push` a `main` compila y
-sube el sitio a `public_html`.
+## Cómo funciona
+
+- **`astro-rebuild`** = rama de trabajo (el código fuente Astro). Aquí se edita.
+- **`main`** = sitio ya compilado (HTML/CSS/JS listos). Hostinger la sirve en veia.com.mx.
+- **GitHub Actions** (`.github/workflows/deploy.yml`): en cada `push` a `astro-rebuild`
+  compila el sitio y publica el resultado (`dist/`) en `main`. Hostinger detecta el
+  cambio en `main` y actualiza el sitio. No usa secretos ni SSH.
+
+Flujo de una actualización:
+
+```
+editar en astro-rebuild  ->  git push  ->  Action compila  ->  publica en main  ->  Hostinger sirve
+```
 
 ## Trabajo local
 
 ```bash
 npm install      # una sola vez
 npm run dev      # servidor local en http://localhost:4321
-npm run build    # genera dist/ (lo que se publica)
+npm run build    # genera dist/ (lo que se publica); opcional en local
 ```
 
-## Puesta en marcha del despliegue automático (pasos de Julio, una sola vez)
+## Publicar un cambio
 
-Estos pasos requieren credenciales, por eso los haces tú:
-
-### 1. Activar SSH en Hostinger
-hPanel → veia.com.mx → Avanzado → **Acceso SSH** → botón **Activar**.
-Anota: IP/host, puerto (ej. 65002) y usuario (ej. u786509254).
-
-### 2. Crear una llave SSH y registrarla en Hostinger
-En tu compu (Git Bash):
 ```bash
-ssh-keygen -t ed25519 -C "github-deploy-veia" -f ~/.ssh/veia_deploy
+git checkout astro-rebuild
+# ...editar archivos en src/ ...
+git add -A && git commit -m "mi cambio"
+git push
 ```
-- Copia el contenido de `~/.ssh/veia_deploy.pub` (la pública) y agrégala en
-  hPanel → Acceso SSH → **Administrar claves SSH** → añadir clave.
 
-### 3. Guardar los secretos en GitHub
-GitHub → repo VEIA → Settings → Secrets and variables → **Actions** → New secret.
-Crea estos 5 secretos:
-
-| Secret | Valor |
-|---|---|
-| `HOSTINGER_SSH_KEY` | contenido de la llave **privada** `~/.ssh/veia_deploy` (todo el texto) |
-| `HOSTINGER_HOST` | la IP/host de SSH (ej. `217.196.55.211`) |
-| `HOSTINGER_PORT` | el puerto SSH (ej. `65002`) |
-| `HOSTINGER_USER` | el usuario (ej. `u786509254`) |
-| `HOSTINGER_TARGET` | ruta de publicación, ej. `/home/u786509254/domains/veia.com.mx/public_html` |
-
-> La ruta exacta de `HOSTINGER_TARGET` se confirma en hPanel → Administrador de archivos
-> (es la carpeta `public_html` del dominio).
-
-### 4. Desconectar el auto-deploy actual de Hostinger
-Hoy Hostinger publica solo jalando la rama `main` del repo (sirve el sitio viejo).
-Para que no peleen los dos sistemas:
-hPanel → veia.com.mx → Avanzado → **GIT** → eliminar el despliegue automático existente.
-A partir de ahí, quien publica es GitHub Actions.
-
-### 5. Fusionar y publicar
-Cuando lo anterior esté listo, fusionamos la rama `astro-rebuild` a `main`.
-El primer push disparará el workflow, que compila y sube el sitio nuevo.
+El resto es automático. Puedes ver el progreso en GitHub → pestaña **Actions**.
 
 ## Notas
-- El correo de Hostinger (contacto@, juliocubas@) **no se toca**: vive aparte del hosting web.
-- `enviar.php` (formulario de contacto) se publica dentro de `dist/` y sigue corriendo como
-  PHP en Hostinger.
-- El workflow no usa `--delete`, así que no borra archivos ajenos en `public_html`.
+- El correo de Hostinger (contacto@, juliocubas@) vive aparte del hosting web: no se toca.
+- `enviar.php` (formulario de contacto) se publica dentro del sitio y corre como PHP en Hostinger.
+- Si algún día quieres mover el hosting o usar despliegue por SSH, se puede cambiar el workflow.
