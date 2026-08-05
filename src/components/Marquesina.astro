@@ -1,0 +1,20 @@
+---
+const items = [
+  "Sitio web profesional",
+  "Presencia en Google",
+  "WhatsApp conectado",
+  "Diseño personalizado",
+  "SEO local básico",
+  "Entrega 3–5 días hábiles",
+];
+---
+
+<div class="v-marquesina" aria-hidden="true">
+  <div class="v-marquesina__pista">
+    {[0, 1].map((copia) => (
+      <div class="v-marquesina__item" key={copia}>
+        {items.map((i) => <span>{i}</span>)}
+      </div>
+    ))}
+  </div>
+</div>
